@@ -50,3 +50,16 @@ nav ul li a{
     background-position: center;
     height: 300px;
 }
+
+footer {
+    background-color: lightgreen;
+    color: black;
+    padding: 20px 0;
+    text-align: center;
+    margin-bottom: -1px; /* Apply negative margin */
+}
+
+footer * {
+    margin: 0;
+    padding: 0;
+}
