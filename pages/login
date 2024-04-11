@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style\style.css">
+
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CropTech</title>
+    </head>
+
+    <body>
+        <header>
+            
+            <div class="NavBoard">
+
+                <a href="Home.html">
+
+                    <div class="logo">
+                        <img src="../style/style.css">
+                    </div>
+                </a>
+                
+                <nav>
+                    <ul>
+                        <li><a href="">A1</a></li>
+                        <li><a href="">A2</a></li>
+                        <li><a href="">A3</a></li>
+
+                        <li><a href="">Login/Register</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+
+        </header>
+    </body>
+
+
+
+
+</html>
