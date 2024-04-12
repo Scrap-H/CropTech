@@ -1,7 +1,8 @@
 html{
     scroll-behavior: smooth;
 
-    background-color: #F8F6F0;
+    background-color: beige;
+    font-family: arial , sans-serif;
 }
 
 
@@ -62,4 +63,62 @@ footer {
 footer * {
     margin: 0;
     padding: 0;
+}
+
+/* LOGIN / REGISTER*/
+
+.LoginBox{
+
+    width: 650px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: lightgreen;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.LoginBox h2{
+    text-align: center;
+}
+
+.inputs{
+    margin-bottom: 15px;
+}
+
+.inputs input{
+    width: 50%;
+    padding: 10px;
+    border: 1px solid darkgreen;
+    border-radius: 3px;
+}
+
+button {
+    width: 30%;
+    padding: 10px;
+    background-color: lightgreen;
+    border: 1px solid black;
+    border-radius: 3px;
+}
+
+button:hover{
+    background-color: darkgreen;
+}
+
+.regButton{
+    text-align: center;
+    margin-top: 10px;
+}
+
+.regButton a {
+    width: 30%;
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    border: 1px solid black;
+    background-color: lightgreen;
+    border-radius: 5px;
+}
+
+.regButton a:hover{
+    background-color: darkgreen;
 }
