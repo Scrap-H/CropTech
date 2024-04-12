@@ -9,7 +9,8 @@ html{
 
 body{
 
-margin: 0%;
+margin: 0;
+padding: 0;
 
 }
 
@@ -23,37 +24,69 @@ margin: 0%;
 }
 
 .wideScreenImg{
-    background-image: url(../assets/images/VastFarmLand.png);
-    background-size: cover;
-    background-position: center;
-    height: 300px;
+    position: relative;
+}
+
+.wideScreenImg img{
+    width: 100%;
+    display: block;
+}
+
+.TextBox{
+    position: absolute;
+    width: 80%;
+    height: 70%;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    transform: translate(-50% , -50%);
+    background-color: rgb(211, 211, 211 , 0.5);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 20px;
+}
+
+.TextBox h1{
+    font-size: 100px;
+    margin: 0;
+}
+.TextBox p{
+    font-size: 20px;
+    margin: 0;
 }
 
 
-.ContentSection{
-    display: flex;
-    flex-wrap: wrap;
+
+.content{
+    width: 100%;
+    height: 50%;
+    background-color: #3EB489;
+    text-align: center;
+    padding: 20px 0;
 }
 
-.ImgLeftContentRight{
-    margin-right: 20px;
-    margin-bottom: 20px;
+.content h2{
+    font-size: 30px;
+    padding: 10px;
+}
+
+.content p{
+    font-size: 20px;
+    margin: 10px;
+}
+
+.itemList{
     display: flex;
+    justify-content: space-around;
     align-items: center;
+
+    padding: 100px;
 }
 
-.ImgLeftContentRight.reverse{
-    flex-direction: row-reverse;
-}
 
-.ImgLeftContentRight h1{
-margin-top: 0;
-}
 
-.ImgLeftContentRight img{
-max-width: 20%;
-height: auto;
-}
 
 
 
@@ -72,68 +105,3 @@ footer * {
     padding: 0;
 }
 
-
-
-
-
-
-
-
-
-/* LOGIN / REGISTER*/
-
-.LoginBox{
-
-    width: 650px;
-    margin: 100px auto;
-    padding: 20px;
-    background-color: lightgreen;
-    border-radius: 5px;
-    text-align: center;
-}
-
-.LoginBox h2{
-    text-align: center;
-}
-
-.inputs{
-    margin-bottom: 15px;
-}
-
-.inputs input{
-    width: 50%;
-    padding: 10px;
-    border: 1px solid darkgreen;
-    border-radius: 3px;
-}
-
-button {
-    width: 30%;
-    padding: 10px;
-    background-color: lightgreen;
-    border: 1px solid black;
-    border-radius: 3px;
-}
-
-button:hover{
-    background-color: darkgreen;
-}
-
-.regButton{
-    text-align: center;
-    margin-top: 10px;
-}
-
-.regButton a {
-    width: 30%;
-    display: inline-block;
-    padding: 10px 20px;
-    text-decoration: none;
-    border: 1px solid black;
-    background-color: lightgreen;
-    border-radius: 5px;
-}
-
-.regButton a:hover{
-    background-color: darkgreen;
-}

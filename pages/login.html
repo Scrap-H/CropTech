@@ -3,6 +3,7 @@
     <head>
         <link rel="stylesheet" href="../style/style.css">
         <link rel="stylesheet" href="../style/Nav.css">
+        <link rel="stylesheet" href="../style/LoginandRegistration.css">
 
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,34 +37,44 @@
         </header>
 
 
-        <div class="LoginBox">
+        <div class="LoginPage">
 
-            <h3>Login</h3>
+            <div class="LoginBox">
+    
+                <form action="" method="post">
 
-            <form action="" method="post">
-                <div class="inputs">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username" required>
-                </div>
+                    <div class="inputs">
+                        <input type="text" placeholder="username" id="username" name="username" required>
+    
+                        <input type="password" placeholder="password" id="password" name="password" required>
+                    </div>
+    
+                    <button type="submit">Login</button>
 
-                <div class="inputs">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required>
-                </div>
+                    <div class="BottomLogin">
+                        <input type="checkbox" checked = "checked" name="remember"> Remember me
 
-                <button type="submit">Login</button>
-            </form>
+                        <a href="">Forget Password</a>
 
-            
-            <p>Don't have an account ?</p>
-            <div  class="regButton">
-                <a href="register.html">Register</a>
+                    </div>
+
+                    <p>Don't have an account ?</p>
+                <button type="button">Register</button>
+                    
+                </form>
+                
+                
+                
             </div>
-            
-
-
 
         </div>
+
+
+
+
+        
+
+        
 
 
     </body>
