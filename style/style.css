@@ -1,7 +1,7 @@
 html{
     scroll-behavior: smooth;
 
-    background-color: beige;
+    background-color: whitesmoke;
     font-family: arial , sans-serif;
 }
 
@@ -13,36 +13,13 @@ margin: 0%;
 
 }
 
-
-.NavBoard{
-    width: 100%;
+.pricing{
+    max-width: 100%;
     margin: 0 auto;
+    padding: 20px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-}
 
-.logo img {
-    width: 50px;
-    height: 50px;
-}
-
-
-nav ul {
-    list-style-type: none;
-    padding: 5px;
-}
-
-nav ul li {
-    display: inline;
-    margin-right: 15px;
-}
-
-nav ul li a{
-    color: red; /* COLOUR IS TEMPORARY*/
-    font-size: large;
-    text-decoration: none;
-    
 }
 
 .wideScreenImg{
@@ -52,8 +29,38 @@ nav ul li a{
     height: 300px;
 }
 
+
+.ContentSection{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.ImgLeftContentRight{
+    margin-right: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.ImgLeftContentRight.reverse{
+    flex-direction: row-reverse;
+}
+
+.ImgLeftContentRight h1{
+margin-top: 0;
+}
+
+.ImgLeftContentRight img{
+max-width: 20%;
+height: auto;
+}
+
+
+
+
+
 footer {
-    background-color: lightgreen;
+    background-color: #3EB489;
     color: black;
     padding: 20px 0;
     text-align: center;
@@ -64,6 +71,14 @@ footer * {
     margin: 0;
     padding: 0;
 }
+
+
+
+
+
+
+
+
 
 /* LOGIN / REGISTER*/
 

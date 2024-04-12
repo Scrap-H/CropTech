@@ -1,0 +1,13 @@
+.box{
+    width: 500px;
+    background-color: #3EB489;
+    padding: 20px;
+    border-radius: 3px;
+    margin-bottom: 20px;
+    text-align: center;
+
+}
+
+.box img{
+    width: 200px;
+}
