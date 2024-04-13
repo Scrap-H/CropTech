@@ -21,7 +21,7 @@
 }
 
 .LoginBox button{
-    width: 100%;
+    width: 50%;
     padding: 20px 20px;
     margin: 10px;
     border-radius: 10px;
@@ -38,7 +38,7 @@
     margin-left: 40%;
 }
 
-input[type=text] , input[type=password]{
+input[type=text] , input[type=password] , input[type=email]{
     width: 100%;
     padding: 15px 20px;
     margin: 10px;
@@ -60,4 +60,9 @@ input[type=text] , input[type=password]{
 
 .regButton div:hover{
     opacity: 0.5;
+}
+
+.Regbox{
+    padding: 20px;
+    display: inline-block;
 }

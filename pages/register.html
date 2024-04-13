@@ -3,6 +3,7 @@
     <head>
         <link rel="stylesheet" href="../style/style.css">
         <link rel="stylesheet" href="../style/Nav.css">
+        <link rel="stylesheet" href="../style/LoginandRegistration.css">
 
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,9 +24,9 @@
                 
                 <nav>
                     <ul>
-                        <li><a href="">A1</a></li>
-                        <li><a href="">A2</a></li>
-                        <li><a href="">A3</a></li>
+                        <li><a href="../Home.html#AboutUs">About</a></li>
+                        <li><a href="../Home.html#Features">Features</a></li>
+                        <li><a href="../Home.html#Pricing">Pricing</a></li> 
 
                         <li><a href="login.html">Login/Register</a></li>
                     </ul>
@@ -36,38 +37,31 @@
         </header>
 
 
-        <div class="LoginBox">
+        <div class="LoginPage">
 
-            <h3>Registration</h3>
+            <div class="LoginBox">
 
-            <form action="" method="post">
-                <div class="inputs">
-                    <label for="FirstName">First Name</label>
-                    <input type="text" id="FirstName" name="FirstName" required>
-                </div>
+                <form action="data.php" method="post">
+                    <div class="inputs">
+                        <input type="text" placeholder="First Name" id="FirstName" name="FirstName" required>
+    
+                        <input type="text"  placeholder="Last Name" id="LastName" name="LastName" required>
+    
+                        <input type="email" placeholder="email" id="email" name="email" required>
+    
+                        <input type="password" placeholder="Password" id="NewPassword" name="NewPassword" required>
 
-                <div class="inputs">
-                    <label for="LastName">Last Name</label>
-                    <input type="text" id="LastName" name="LastName" required>
-                </div>
+                        <input type="text" placeholder="Verify Password" id="PasswordVerification" name="PasswordVerification" required>
+                    </div>
+    
+                    <button type="submit">Register</button>
+                </form>
 
-                <div class="inputs">
-                    <label for="email">email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
+            </div>
 
-                <div class="inputs">
-                    <label for="NewPassword">Password</label>
-                    <input type="password" id="NewPassword" name="NewPassword" required>
-                </div>
 
-                <div class="inputs">
-                    <label for="PasswordVerification">Password</label>
-                    <input type="text" id="PasswordVerification" name="PasswordVerification" required>
-                </div>
 
-                <button type="submit">Register</button>
-            </form>
+            
 
 
             <!-- HAVE A VERIFICATION SYSTEM -->
