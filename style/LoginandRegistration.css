@@ -66,3 +66,7 @@ input[type=text] , input[type=password] , input[type=email]{
     padding: 20px;
     display: inline-block;
 }
+
+.inputs span{
+    color: red;
+}

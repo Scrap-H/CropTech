@@ -1,16 +1,25 @@
 <?php
-// PHP Data Objects(PDO) Sample Code:
-try {
-    $conn = new PDO("sqlsrv:server = tcp:croptech.database.windows.net,1433; Database = UserDetail", "CroptechAdmin", "Crop#Tech~Admin$");
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-}
-catch (PDOException $e) {
-    print("Error connecting to SQL Server.");
-    die(print_r($e));
-}
+// Get form data
+$firstName = $_POST['FirstName'];
+$lastName = $_POST['LastName'];
+$email = $_POST['email'];
+$password = $_POST['NewPassword'];
+$passwordVerification = $_POST['PasswordVerification'];
 
-// SQL Server Extension Sample Code:
-$connectionInfo = array("UID" => "CroptechAdmin", "pwd" => "Crop#Tech~Admin$", "Database" => "UserDetail", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
-$serverName = "tcp:croptech.database.windows.net,1433";
-$conn = sqlsrv_connect($serverName, $connectionInfo);
+// Validate form data (add your validation logic here)
+
+// Create or open Excel file
+$excelFile = 'data.xlsx';
+
+// Data to be written to Excel
+$excelData = [$firstName, $lastName, $email, $password, $passwordVerification];
+
+// Write data to Excel file
+$fp = fopen($excelFile, 'a'); // Open file for writing (append mode)
+fputcsv($fp, $excelData); // Write data to file
+fclose($fp); // Close file
+
+// Redirect user back to the form page or any other page
+header("Location: ../pages/login.html");
+exit;
 ?>

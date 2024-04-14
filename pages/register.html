@@ -41,7 +41,7 @@
 
             <div class="LoginBox">
 
-                <form action="data.php" method="post">
+                <form action="../Connector/main.php" method="post">
                     <div class="inputs">
                         <input type="text" placeholder="First Name" id="FirstName" name="FirstName" required>
     
@@ -52,19 +52,54 @@
                         <input type="password" placeholder="Password" id="NewPassword" name="NewPassword" required>
 
                         <input type="text" placeholder="Verify Password" id="PasswordVerification" name="PasswordVerification" required>
+                        <span id="verificationStatus"></span>
                     </div>
     
-                    <button type="submit">Register</button>
+                    <button type="submit" id="regButton" disabled>Register</button>
                 </form>
 
             </div>
 
 
+            <script>
 
+                document.addEventListener("DOMContentLoaded" , function(){
+
+                    var passIn = document.getElementById("NewPassword");
+                    var verificationIn = document.getElementById("PasswordVerification");
+                    var verificationStatus = document.getElementById("verificationStatus");
+                    var regButtonstatus = document.getElementById("regButton");
+
+                    function VerifyPassword(){
+
+                        var pass = passIn.value;
+                        var verification = verificationIn.value;
+
+                        if(pass === verification){
+
+                            verificationStatus.textContent = "";
+                            regButtonstatus.disabled = false;
+
+                        } else{
+                            verificationStatus.textContent = "Does not match";
+                            regButtonstatus.disabled = true;
+                        }
+
+                    }
+
+                    passIn.addEventListener("input" , VerifyPassword);
+                    verificationIn.addEventListener("input" , VerifyPassword);
+
+
+                }
             
+            
+            
+            
+            
+            )
 
-
-            <!-- HAVE A VERIFICATION SYSTEM -->
+            </script>
 
 
 
