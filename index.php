@@ -18,7 +18,7 @@
             
             <div class="NavBoard">
 
-                <a href="Home.php">
+                <a href="index.php">
 
                     <div class="logo">
                         <img src="assets\images\Icon.png">

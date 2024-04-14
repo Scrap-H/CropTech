@@ -16,7 +16,7 @@
             
             <div class="NavBoard">
 
-                <a href="../Home.php">
+                <a href="../index.php">
 
                     <div class="logo">
                         <img src="../assets\images\Icon.png">
@@ -25,9 +25,9 @@
                 
                 <nav>
                     <ul>
-                        <li><a href="../Home.php#AboutUs">About</a></li>
-                        <li><a href="../Home.php#Features">Features</a></li>
-                        <li><a href="../Home.php#Pricing">Pricing</a></li>
+                        <li><a href="../index.php#AboutUs">About</a></li>
+                        <li><a href="../index.php#Features">Features</a></li>
+                        <li><a href="../index.php#Pricing">Pricing</a></li>
 
                         <li><a href="login.php">Login/Register</a></li>
                     </ul>
