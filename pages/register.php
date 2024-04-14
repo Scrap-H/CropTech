@@ -7,6 +7,8 @@
 
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="icon" href="../assets\images\Icon.png" sizes="32x32" type="image/png">
         <title>CropTech</title>
     </head>
 
@@ -18,7 +20,7 @@
                 <a href="../Home.php">
 
                     <div class="logo">
-                        <img src="../assets/images/Vanamo_Logo.png">
+                        <img src="../assets\images\Icon.png">
                     </div>
                 </a>
                 
