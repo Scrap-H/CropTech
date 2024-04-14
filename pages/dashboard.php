@@ -17,7 +17,7 @@
             
         <div class="NavBoard">
 
-            <a href="../Home.html">
+            <a href="../Home.php">
 
                 <div class="logo">
                     <img src="../assets/images/Vanamo_Logo.png">

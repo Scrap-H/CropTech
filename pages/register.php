@@ -15,7 +15,7 @@
             
             <div class="NavBoard">
 
-                <a href="../Home.html">
+                <a href="../Home.php">
 
                     <div class="logo">
                         <img src="../assets/images/Vanamo_Logo.png">
@@ -24,11 +24,11 @@
                 
                 <nav>
                     <ul>
-                        <li><a href="../Home.html#AboutUs">About</a></li>
-                        <li><a href="../Home.html#Features">Features</a></li>
-                        <li><a href="../Home.html#Pricing">Pricing</a></li> 
+                        <li><a href="../Home.php#AboutUs">About</a></li>
+                        <li><a href="../Home.php#Features">Features</a></li>
+                        <li><a href="../Home.php#Pricing">Pricing</a></li> 
 
-                        <li><a href="login.html">Login/Register</a></li>
+                        <li><a href="login.php">Login/Register</a></li>
                     </ul>
                 </nav>
             </div>
