@@ -1,34 +1,43 @@
 <?php
 
 // The code below has been taken and slightly modified for use , It has been taken from : 
-// https://learn.microsoft.com/en-us/training/modules/develop-apps-with-azure-database-mysql/2-connect-to-mysql-from-app?pivots=php
-// Title of sections : Connecting to flexible server using TLS/SSL in PHP (and below)
+// https://learn.microsoft.com/en-us/azure/mysql/flexible-server/connect-php?tabs=windows
+// Title of sections : Connect and create a table
 
-$host = 'croptech-server.mysql.database.azure.com';
-$username = 'xciernemex';
-$password = 'ZRWCk$5wSb26ma2X';
-$db_name = 'your_database';
+$host = 'croptech.mysql.database.azure.com';
+$username = 'lfwbbgtfko';
+$password = 'AIOF0$4uERgdq$m0';
+$db_name = 'userdetail';
+
+$con = mysqli_init();
+mysqli_ssl_set($con,NULL,NULL, "DigiCertGlobalRootCA.crt.pem", NULL, NULL);
+mysqli_real_connect($conn, $host, $username, "$password", "db_name", 3306, MYSQLI_CLIENT_SSL);
+if (mysqli_connect_errno($conn)) {
+die('Failed to connect to MySQL: '.mysqli_connect_error());
+}
+
 
 $conn = mysqli_init();
-mysqli_ssl_set($conn,NULL,NULL, "<your_path_to_SSL_cert>", NULL, NULL);
-mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306, MYSQLI_CLIENT_SSL);
+mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306);
 if (mysqli_connect_errno($conn)) {
-    die('Failed to connect to MySQL: '.mysqli_connect_error());
+die('Failed to connect to MySQL: '.mysqli_connect_error());
 }
-printf("Connection Established.\n");
 
+// Run the create table query
+if (mysqli_query($conn, '
+CREATE TABLE UserDetails (
+`Id` INT NOT NULL AUTO_INCREMENT ,
+`UserName` VARCHAR(200) NOT NULL ,
+`Email` VARCHAR(50) NOT NULL ,
+`Pass` DOUBLE NOT NULL ,
+PRIMARY KEY (`Id`)
+);
+')) {
+printf("Table created\n");
+}
 
-
-
-
-
-
-
-
-
-
-
-
+//Close the connection
+mysqli_close($conn);
 
 
 

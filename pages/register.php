@@ -43,7 +43,7 @@
 
             <div class="LoginBox">
 
-                <form action="../Connector/main.php" method="post">
+                <form action="../Connector\CRUD\dbWrite.php" method="post">
                     <div class="inputs">
                         <input type="text" placeholder="First Name" id="FirstName" name="FirstName" required>
     
