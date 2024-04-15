@@ -42,7 +42,7 @@
 
             <div class="LoginBox">
     
-                <form action="" method="post">
+                <form action="../Connector/dbcon.php" method="post">
 
                     <div class="inputs">
                         <input type="text" placeholder="username / email" id="username" name="username" required>
