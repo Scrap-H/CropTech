@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="../style/Nav.css">
     <link rel="stylesheet" href="../style/LoginandRegistration.css">
 
+    <link rel="stylesheet" href="../API\sensorReaction\displaybox.css">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -71,9 +73,32 @@
                 <img src="../assets/images/X.png" alt="">
             </div>
     
+                <div class="displaybox" id="GetTempVal">
+
+                </div>
     
-    
-    
+<script>
+
+    //SCRIPT FOR TEMPETURE SENSOR
+    function refresh(){
+        document.getElementById('GetTempVal').innerHTML = '';
+
+    fetch('../API\sensorReaction\ReadData')
+    .then(Response => Response.text())
+    .then(data => {
+        document.getElementById('GetTempVal').innerHTML = data;
+    })
+    .catch(error => {
+        console.error('Sensor Data fetch failed due to : ' , error)
+    });
+    }
+
+    setInterval(refresh , 30 * 60 * 1000); //refresh ever 30 minutes
+
+    refresh;
+
+
+</script>
     
     
     
