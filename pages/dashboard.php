@@ -83,7 +83,7 @@
     function refresh(){
         document.getElementById('GetTempVal').innerHTML = '';
 
-    fetch('../API\sensorReaction\ReadData')
+    fetch('..\API\sensorReaction\ReadData.php')
     .then(Response => Response.text())
     .then(data => {
         document.getElementById('GetTempVal').innerHTML = data;
