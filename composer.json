@@ -1,0 +1,19 @@
+{
+    "name": "mervin/crop-tech",
+    "description": "A farming solution final year project",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Mervin\\CropTech\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Scrap-H",
+            "email": "mervin.chung729@gmail.com"
+        }
+    ],
+    "require": {
+        "phpoffice/phpspreadsheet": "^1.0"
+    }
+}

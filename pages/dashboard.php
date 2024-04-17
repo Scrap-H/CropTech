@@ -73,32 +73,42 @@
                 <img src="../assets/images/X.png" alt="">
             </div>
     
-                <div class="displaybox" id="GetTempVal">
+                <div class="displaybox" >
+                    <h2>Soil Moisture</h2>
+                    <h3><span id="SensorVal" class = "TempVal"></span></h3>
+
+                    <script>
+
+                        function fetchSensorVal(lastIndex){
+                            const url = '../../API/sensorReaction/ReadArr.php?lastIndex=' + lastIndex + '&t=' + new Date().getTime();
+                            fetch(url)
+                            .then(Response => Response.json())
+                            .then(data => {
+
+                                if(data.value !== null){
+                                    document.getElementById('SensorVal').textContent = data.value + "%";
+                                    setTimeout(() => fetchSensorVal(data.index),60 * 1000 );
+                                    
+                                    //30 * 60 * 1000
+                                    //fetchSensorVal(data.index);
+                                }else{
+                                    document.getElementById('SensorVal').textContent = "ERROR";
+                                }
+                            })
+                            .catch(error => {
+
+                                console.error('sensor fetch failed : ' , error);
+
+                            });
+                        }
+
+                        fetchSensorVal(0);
+
+                        
+                    </script>
 
                 </div>
     
-<script>
-
-    //SCRIPT FOR TEMPETURE SENSOR
-    function refresh(){
-        document.getElementById('GetTempVal').innerHTML = '';
-
-    fetch('..\API\sensorReaction\ReadData.php')
-    .then(Response => Response.text())
-    .then(data => {
-        document.getElementById('GetTempVal').innerHTML = data;
-    })
-    .catch(error => {
-        console.error('Sensor Data fetch failed due to : ' , error)
-    });
-    }
-
-    setInterval(refresh , 30 * 60 * 1000); //refresh ever 30 minutes
-
-    refresh;
-
-
-</script>
     
     
     
