@@ -1,7 +1,5 @@
 <?php
 
-//Page Security
-
 session_start();
 
 if (isset($_SESSION["user_id"])){
@@ -17,120 +15,132 @@ if(isset($_GET['logout'])){
     header("Location: login.php");
     exit();
 }
-
-
-
-
-
-
 ?>
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
 
     <link rel="stylesheet" href="../style/style.css">
     <link rel="stylesheet" href="../style/Nav.css">
     <link rel="stylesheet" href="../style/LoginandRegistration.css">
-
     <link rel="stylesheet" href="../API\sensorReaction\displaybox.css">
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link rel="icon" href="../assets\images\Icon.png" sizes="32x32" type="image/png">
-    <title>Dashboard</title>
+
+
+
 </head>
 
 <body>
-
-    <div  class= "dashboardBackground">
-
-        <div class="dashbacking">
-
-            <div>
-
-                <h3>Hello </h3>
-
-                <?php
-                
-                echo $_SESSION["User_firstName"];
-                
-                
-                ?>
-
-            </div>
-
-
-
-
-
     
-                <div class="displaybox" >
-                    <h2>Soil Moisture</h2>
-                    <h3><span id="SensorVal" class = "TempVal"></span></h3>
+<div class = "greeting">
 
-                    <script>
+<?php
+$name = $_SESSION["User_firstName"];
+echo '<h1> Hello '.$name. '</h1>';
+?>
 
-                        function fetchSensorVal(lastIndex){
-                            const url = '../../API/sensorReaction/ReadArr.php?lastIndex=' + lastIndex + '&t=' + new Date().getTime();
-                            fetch(url)
-                            .then(Response => Response.json())
-                            .then(data => {
+</div>
 
-                                if(data.value !== null){
-                                    document.getElementById('SensorVal').textContent = data.value + "%";
-                                    setTimeout(() => fetchSensorVal(data.index), 30 * 60 * 1000 );
+    <div class = "dashboardBackground dashboardlayout">
+
+        
+        <div class = "Icons" >
+
+        <a href="">
+        <img width="100" height="100" src="https://img.icons8.com/ios/100/soil.png" alt="soil"/>
+        <h1 id="SensorVal" class = "TempVal"></h1>
+        <h2>Soil Moisture</h2>
+        </a>
+                    
+
+        <script>
+            function fetchSensorVal(lastIndex){
+                const url = '../../API/sensorReaction/ReadArr.php?lastIndex=' + lastIndex + '&t=' + new Date().getTime();
+                fetch(url)
+                .then(Response => Response.json())
+                .then(data => {
+
+                    if(data.value !== null){
+                        document.getElementById('SensorVal').textContent = data.value + "%";
+                        setTimeout(() => fetchSensorVal(data.index), 30 * 60 * 1000 );
                                     
-                                }else{
-                                    document.getElementById('SensorVal').textContent = "ERROR";
-                                }
-                            })
-                            .catch(error => {
+                    }else{
+                        document.getElementById('SensorVal').textContent = "ERROR";
+                    }
+                })
+                .catch(error => {
 
-                                console.error('sensor fetch failed : ' , error);
+                    console.error('sensor fetch failed : ' , error);
 
-                            });
-                        }
+                });
+            }
+            fetchSensorVal(0);
+        </script>
 
-                        fetchSensorVal(0);
-
-                        
-                    </script>
-
-
-                </div>
-    
-    
-                <div>
-                    <a href="?logout=true">
-                        <h1>LogOut</h1>
-                    </a>
-                </div>
-    
         </div>
 
+
+       <div class = "Icons">
+
+       <a href="">
+       <img width="100" height="100" src="https://img.icons8.com/ios/100/combo-chart--v1.png" alt="combo-chart--v1"/>
+       <h1>statistics</h1>
+       </a>    
+
+       </div>
+
+       
+       <div class = "Icons">
+
+       <a href="">
+       <img width="100" height="100" src="https://img.icons8.com/ios/100/switches.png" alt="switches"/>
+       <h1>switch</h1>                 
+       </a>                 
+
+       </div> 
+
+
+       <div class = "Icons">
+
+        <a href="">
+        <img width="100" height="100" src="https://img.icons8.com/ios/100/partly-cloudy-day--v1.png" alt="partly-cloudy-day--v1"/>                
+        <h1>weather</h1>                
+        </a>
+       
+       </div> 
+
+
+       <div class = "Icons">
+
+       <a href="">
+       <img width="100" height="100" src="https://img.icons8.com/ios/100/robot-3.png" alt="robot-3"/>
+       <h1>Automation timetable</h1>                 
+       </a>
+       
+       </div> 
+
+
+       <div class = "Icons">
+
+        <a href="?logout=true">
+        <img width="100" height="100" src="https://img.icons8.com/ios/100/exit--v1.png" alt="exit--v1"/>
+        <h1>LogOut</h1>
+        </a>
+
+        </div>
+
+
+
+
+
+        
     </div>
-    
-
-
-
-
-
-
-
-    <script>
-
-        // ENTER CODE TO HAVE USER NAME DISPLAYED FOR DASH TITLE
-
-
-    </script>
-
-
 
 </body>
-
 </html>

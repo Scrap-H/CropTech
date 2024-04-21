@@ -38,31 +38,38 @@
 
         </header>
 
+        <div class= pagebackgroundLoginReg>
+
 
         <div class="LoginPage">
 
-            <div class="LoginBox">
+<div class="LoginBox">
 
-                <form action="../Connector/userdet_INPUT.php" method="post">
-                    <div class="inputs">
-                        <input type="text" placeholder="First Name" id="FirstName" name="First_Name" required>
-    
-                        <input type="text"  placeholder="Last Name" id="LastName" name="Last_Name" required>
-    
-                        <input type="email" placeholder="email" id="email" name="email" required>
-    
-                        <input type="password" placeholder="Password" id="NewPassword" name="Password" required>
+    <form action="../Connector/userdet_INPUT.php" method="post">
+        <div class="inputs">
+            <input type="text" placeholder="First Name" id="FirstName" name="First_Name" required>
 
-                        <input type="text" placeholder="Verify Password" id="PasswordVerification" name="PasswordVerification" required>
-                        <span id="verificationStatus"></span>
-                    </div>
-                    
-                    <input type="submit" id="regButton" name="submit" disabled>
+            <input type="text"  placeholder="Last Name" id="LastName" name="Last_Name" required>
 
-                    
-                </form>
+            <input type="email" placeholder="email" id="email" name="email" required>
 
-            </div>
+            <input type="password" placeholder="Password" id="NewPassword" name="Password" required>
+
+            <input type="text" placeholder="Verify Password" id="PasswordVerification" name="PasswordVerification" required>
+            <span id="verificationStatus"></span>
+        </div>
+        
+        <input type="submit" id="regButton" name="submit" disabled>
+
+        
+    </form>
+
+</div>
+
+
+        </div>
+
+        
 
     
             <script>
