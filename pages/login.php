@@ -1,3 +1,9 @@
+<?php
+session_start();
+
+
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -37,20 +43,22 @@
 
         </header>
 
+        <div class = "pagebackgroundLoginReg">
 
         <div class="LoginPage">
 
             <div class="LoginBox">
     
-                <form action="../Connector/dbcon.php" method="post">
+                <form action="../Connector/userdet_READ.php" method="post">
 
                     <div class="inputs">
-                        <input type="text" placeholder="username / email" id="username" name="username" required>
+                        <input type="text" placeholder="email" id="username" name="email" required>
     
                         <input type="password" placeholder="password" id="password" name="password" required>
                     </div>
-    
-                    <button type="submit">Login</button>
+
+                    <input type="submit" name="login" value="Login">
+
 
                     <div class="BottomLogin">
                         <input type="checkbox"  checked = "checked" name="remember"> Remember me
@@ -70,7 +78,7 @@
 
         </div>
 
-
+        </div>
 
 
         

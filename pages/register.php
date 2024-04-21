@@ -43,26 +43,28 @@
 
             <div class="LoginBox">
 
-                <form action="../Connector\CRUD\dbWrite.php" method="post">
+                <form action="../Connector/userdet_INPUT.php" method="post">
                     <div class="inputs">
-                        <input type="text" placeholder="First Name" id="FirstName" name="FirstName" required>
+                        <input type="text" placeholder="First Name" id="FirstName" name="First_Name" required>
     
-                        <input type="text"  placeholder="Last Name" id="LastName" name="LastName" required>
+                        <input type="text"  placeholder="Last Name" id="LastName" name="Last_Name" required>
     
                         <input type="email" placeholder="email" id="email" name="email" required>
     
-                        <input type="password" placeholder="Password" id="NewPassword" name="NewPassword" required>
+                        <input type="password" placeholder="Password" id="NewPassword" name="Password" required>
 
                         <input type="text" placeholder="Verify Password" id="PasswordVerification" name="PasswordVerification" required>
                         <span id="verificationStatus"></span>
                     </div>
-    
-                    <button type="submit" id="regButton" disabled>Register</button>
+                    
+                    <input type="submit" id="regButton" name="submit" disabled>
+
+                    
                 </form>
 
             </div>
 
-
+    
             <script>
 
                 document.addEventListener("DOMContentLoaded" , function(){
