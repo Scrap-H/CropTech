@@ -1,8 +1,6 @@
 <?php
 session_start();
 
-//var_dump($_POST);
-
 
 if (isset($_POST["login"])) {
 
@@ -32,6 +30,12 @@ if (isset($_POST["login"])) {
 
         $_SESSION["user_id"] = $user["id"];
         $_SESSION["User_firstName"] = $user["FirstName"];
+
+        if($email === "croptechad@gmail.com"){
+            $_SESSION["role"] = "ADMIN";
+        }else{
+            $_SESSION["role"] = "USER";
+        }
 
         header("Location: ../pages/dashboard.php");
 

@@ -146,4 +146,8 @@ footer * {
     align-items: center;
 }
 
+.errorText{
+    background-color: red;
+    padding: 50px;
+}
 

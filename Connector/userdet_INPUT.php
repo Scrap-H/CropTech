@@ -7,6 +7,7 @@ if(isset($_POST["submit"])) {
     $email = $_POST["email"];
     $password = $_POST["Password"];
     $password_confirmation = $_POST["PasswordVerification"];
+    $errorDisplay = array();
 
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
@@ -22,6 +23,7 @@ if(isset($_POST["submit"])) {
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if($result) {
+        
         echo "Email already in use";
     }else{
 
@@ -37,6 +39,7 @@ if(isset($_POST["submit"])) {
 
         if($stmt->execute()) {
             echo "Registered";
+            header("Location: ../pages/login.php");
         } else {
             echo "Registration Error: " . $stmt->errorInfo()[2];
         }

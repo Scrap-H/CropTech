@@ -1,8 +1,7 @@
 <?php
 
 session_start();
-
-if (isset($_SESSION["user_id"])){
+if (($_SESSION['role'] !== 'ADMIN' && $_SESSION['role'] !== 'USER')) {
     header("Location: login.php");
     exit();
 }
@@ -126,6 +125,24 @@ echo '<h1> Hello '.$name. '</h1>';
        </div> 
 
 
+       <?php 
+        if($_SESSION['role'] === 'ADMIN'):
+        ?>
+
+        <div class = "Icons"> 
+
+        <a href="https://accounts.google.com/v3/signin/identifier?hl=en_GB&ifkv=ARZ0qKJ5PT5oUMrBg575ewqh6wKDlllGxrZ_hlagmyf4GJitM-GQXvWCstEbrAjx-vF0mCkx80xw&flowName=GlifWebSignIn&flowEntry=ServiceLogin&dsh=S-503238949%3A1713818496159177&theme=mn&ddm=0" target="_blank">
+        <img width="100" height="100" src="https://img.icons8.com/ios/100/mail.png" alt="mail"/>
+        <h1>Admin email</h1>    
+        </a>
+
+        </div>
+
+        <?php 
+        endif; 
+        ?>
+
+
        <div class = "Icons">
 
         <a href="?logout=true">
@@ -136,11 +153,26 @@ echo '<h1> Hello '.$name. '</h1>';
         </div>
 
 
+        
+
 
 
 
         
     </div>
+
+    <footer>
+            <div class="footerText">
+                <h1> Contact us </h1>
+                <h5>email : mervin.chung729@gmail.com</h5>
+                <h5>      : croptechad@gmail.com</h5>
+            </div>
+            
+
+            <h6>2024 CropTech</h6>
+
+        </footer>
+
 
 </body>
 </html>
