@@ -18,7 +18,6 @@ if(isset($_GET['logout'])){
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,13 +33,11 @@ if(isset($_GET['logout'])){
 
     <link rel="icon" href="../assets\images\Icon.png" sizes="32x32" type="image/png">
 
-
-
 </head>
 
 <body>
     
- <!-- USER GREETING -->
+<!-- USER GREETING -->
 
 <div class = "greeting">
 
@@ -51,19 +48,11 @@ echo '<h1> Hello '.$name. '</h1>';
 
 </div>
 
-    <div class = "dashboardBackground dashboardlayout">
+<div class = "DashboardContent">
 
-        
-        <div class = "Icons" >
+<!-- Soil Moisture -->
 
-        <a href="">
-        <img width="100" height="100" src="https://img.icons8.com/ios/100/soil.png" alt="soil"/>
-        <h1 id="SensorVal" class = "TempVal"></h1>
-        <h2>Soil Moisture</h2>
-        </a>
-                    
-
-        <script>
+<script>
             function fetchSensorVal(lastIndex){
                 const url = '../../API/sensorReaction/ReadArr.php?lastIndex=' + lastIndex + '&t=' + new Date().getTime();
                 fetch(url)
@@ -71,7 +60,8 @@ echo '<h1> Hello '.$name. '</h1>';
                 .then(data => {
 
                     if(data.value !== null){
-                        document.getElementById('SensorVal').textContent = data.value + "%";
+                        document.getElementById('SensorVal1').textContent = data.value + "%";
+                        document.getElementById('SensorVal2').textContent = data.value + "%"; 
                         setTimeout(() => fetchSensorVal(data.index), 30 * 60 * 1000 );
                                     
                     }else{
@@ -87,73 +77,64 @@ echo '<h1> Hello '.$name. '</h1>';
             fetchSensorVal(0);
         </script>
 
-        </div>
+<div onclick="boxtoggle()" class="initialbox">
 
-         <!-- statistics -->
+<img width="100" height="100" src="https://img.icons8.com/ios/100/soil.png" alt="soil"/>
+<h2>Soil Moisture</h2>
+<h1 id="SensorVal1"></h1>
 
-       <div onclick="DisplayPopup()" class = "Icons">
+</div>
 
-       <a href="">
-       <img width="100" height="100" src="https://img.icons8.com/ios/100/combo-chart--v1.png" alt="combo-chart--v1"/>
-       <h1>statistics</h1>
-       </a>    
+<div onclick="boxtoggle()" class = "expandedbox">
 
-       </div>
+<img width="100" height="100" src="https://img.icons8.com/ios/100/soil.png" alt="soil"/>
+<div class = "moistureBox">
 
-        <!-- Switch -->
-       
-       <div class = "Icons">
+    <div>
+    <h1>Current moisture </h1>
+    <h1 id="SensorVal2"></h1>
+    </div>
 
-       <a href="">
-       <img width="100" height="100" src="https://img.icons8.com/ios/100/switches.png" alt="switches"/>
-       <h1>switch</h1>                 
-       </a>                 
+    <div class = "sensorDividor">
 
-       </div> 
+    <div class = "sensorContent">
+        <h1> 1h </h1>
+        <h1>dummy</h1>
+    </div>
 
-        <!-- Weather -->
+    <div class = "sensorContent">
+        <h1> 3h </h1>
+        <h1>dummy</h1>
+    </div>
 
-       <div class = "Icons">
+    <div class = "sensorContent">
+        <h1> 5h </h1>
+        <h1>dummy</h1>
+    </div>
 
-        <a href="">
-        <img width="100" height="100" src="https://img.icons8.com/ios/100/partly-cloudy-day--v1.png" alt="partly-cloudy-day--v1"/>                
-        <h1>weather</h1>                
-        </a>
-       
-       </div> 
+    <div class = "sensorContent">
+        <h1> 7h </h1>
+        <h1>dummy</h1>
+    </div>
 
-        <!-- Automation -->
+    </div>
 
-       <div class = "Icons">
+</div>
 
-       <a href="">
-       <img width="100" height="100" src="https://img.icons8.com/ios/100/robot-3.png" alt="robot-3"/>
-       <h1>Automation timetable</h1>                 
-       </a>
-       
-       </div> 
+</div>
 
+<!-- Weather -->
 
-       <?php 
-        if($_SESSION['role'] === 'ADMIN'):
-        ?>
+<div onclick="boxtoggle()" class="initialbox">
 
-        <div class = "Icons"> 
+<img width="32" height="32" src="https://img.icons8.com/windows/32/chance-of-storm--v1.png" alt="chance-of-storm--v1"/>
+<h2>Forecast</h2>
+<h1 id="SensorVal1"></h1>
+</div>
 
-        <a href="https://accounts.google.com/v3/signin/identifier?hl=en_GB&ifkv=ARZ0qKJ5PT5oUMrBg575ewqh6wKDlllGxrZ_hlagmyf4GJitM-GQXvWCstEbrAjx-vF0mCkx80xw&flowName=GlifWebSignIn&flowEntry=ServiceLogin&dsh=S-503238949%3A1713818496159177&theme=mn&ddm=0" target="_blank">
-        <img width="100" height="100" src="https://img.icons8.com/ios/100/mail.png" alt="mail"/>
-        <h1>Admin email</h1>    
-        </a>
+<!-- Logout -->
 
-        </div>
-
-        <?php 
-        endif; 
-        ?>
-
-         <!-- Logout -->
-
-       <div class = "Icons">
+<div class = "initialbox">
 
         <a href="?logout=true">
         <img width="100" height="100" src="https://img.icons8.com/ios/100/exit--v1.png" alt="exit--v1"/>
@@ -165,7 +146,12 @@ echo '<h1> Hello '.$name. '</h1>';
         
     </div>
 
-    <footer>
+
+</div>
+
+</body>
+
+<footer>
             <div class="footerText">
                 <h1> Contact us </h1>
                 <h5>email : mervin.chung729@gmail.com</h5>
@@ -177,6 +163,4 @@ echo '<h1> Hello '.$name. '</h1>';
 
         </footer>
 
-
-</body>
 </html>

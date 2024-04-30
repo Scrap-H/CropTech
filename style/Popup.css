@@ -1,0 +1,46 @@
+.initialbox{
+    display: block;
+    width: 15%;
+    padding: 20px;
+    border: 5px solid black;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.expandedbox{
+    display: none;
+    position: fixed;
+    left: 55px;
+    width: 90%;
+    padding: 20px;
+    cursor: pointer;
+    border: 5px solid black;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.DashboardContent{
+    padding: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 35px;
+}
+
+.sensorDividor{
+    border-top: 2px solid black;
+    display: flex;
+    justify-content: center;
+}
+
+.moistureBox{
+    display: grid;
+}
+
+.sensorContent{
+    width: 15%;
+    padding: 15px;
+    text-align: center;
+    object-position: center;
+}
+
