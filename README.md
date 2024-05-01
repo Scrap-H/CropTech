@@ -6,6 +6,6 @@ you will need to modify the .ini folder and replace it with the folder below :
 
 the file has included some extensions that will be needed to run locally as well as using Composer to download phpoffice/phpspreadsheet
 
-without the ini composer will not be able to download the necessary tools. 
+without the modified in file, composer will not be able to download the necessary tools. 
 
-for convenience XAMPP will also be needed to test out the login and registration function 
+for convenience, XAMPP will also be needed for SQL.
