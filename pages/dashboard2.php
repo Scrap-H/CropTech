@@ -35,7 +35,7 @@ if(isset($_GET['logout'])){
 
 </head>
 
-<body>
+<body class = "dashboard">
     
 <!-- USER GREETING -->
 
@@ -77,59 +77,77 @@ echo '<h1> Hello '.$name. '</h1>';
             fetchSensorVal(0);
         </script>
 
-<div onclick="boxtoggle()" class="initialbox">
-
-<img width="100" height="100" src="https://img.icons8.com/ios/100/soil.png" alt="soil"/>
-<h2>Soil Moisture</h2>
-<h1 id="SensorVal1"></h1>
-
+<div onclick="boxtoggle('Soil1' , 'Soil2')" class="initialbox" id = "Soil1">
+    <img width="100" height="100" src="https://img.icons8.com/ios/100/soil.png" alt="soil"/>
+    <h2>Soil Moisture</h2>
+    <h1 id="SensorVal1"></h1>
 </div>
 
-<div onclick="boxtoggle()" class = "expandedbox">
+<div onclick="boxtoggle('Soil2' , 'Soil1')" class="expandedbox" id = "Soil2">
+    <img width="100" height="100" src="https://img.icons8.com/ios/100/soil.png" alt="soil"/>
+    <div class="moistureBox">
+        <div>
+            <h1>Current moisture </h1>
+            <h1 id="SensorVal2"></h1>
+        </div>
+        <div class="sensorDividor">
+            <div class="sensorContent">
+                <h1> 1h </h1>
+                <h1>dummy</h1>
+            </div>
+            <div class="sensorContent">
+                <h1> 3h </h1>
+                <h1>dummy</h1>
+            </div>
+            <div class="sensorContent">
+                <h1> 5h </h1>
+                <h1>dummy</h1>
+            </div>
+            <div class="sensorContent">
+                <h1> 7h </h1>
+                <h1>dummy</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Weather -->
+
+<div onclick="boxtoggle('Weather1' , 'Weather2')" class="initialbox" id = "Weather1">
+
+<img width="32" height="32" src="https://img.icons8.com/windows/32/chance-of-storm--v1.png" alt="chance-of-storm--v1"/>
+<h2>Forecast</h2>
+<h1 id="SensorVal1"></h1>
+</div>
+
+<div onclick="boxtoggle('Weather2' , 'Weather1')" class = "expandedbox" id = "Weather2">
 
 <img width="100" height="100" src="https://img.icons8.com/ios/100/soil.png" alt="soil"/>
 <div class = "moistureBox">
 
     <div>
-    <h1>Current moisture </h1>
+    <h1>Weather Forecast </h1>
     <h1 id="SensorVal2"></h1>
     </div>
 
     <div class = "sensorDividor">
 
     <div class = "sensorContent">
-        <h1> 1h </h1>
-        <h1>dummy</h1>
+        <h1> today </h1>
     </div>
 
     <div class = "sensorContent">
-        <h1> 3h </h1>
-        <h1>dummy</h1>
+        <h1> tomorrow </h1>
     </div>
 
     <div class = "sensorContent">
-        <h1> 5h </h1>
-        <h1>dummy</h1>
-    </div>
-
-    <div class = "sensorContent">
-        <h1> 7h </h1>
-        <h1>dummy</h1>
+        <h1> day after </h1>
     </div>
 
     </div>
 
 </div>
 
-</div>
-
-<!-- Weather -->
-
-<div onclick="boxtoggle()" class="initialbox">
-
-<img width="32" height="32" src="https://img.icons8.com/windows/32/chance-of-storm--v1.png" alt="chance-of-storm--v1"/>
-<h2>Forecast</h2>
-<h1 id="SensorVal1"></h1>
 </div>
 
 <!-- Logout -->

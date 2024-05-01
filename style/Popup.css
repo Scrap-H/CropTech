@@ -44,3 +44,10 @@
     object-position: center;
 }
 
+.dashboard{
+    background-image: url('../assets/images/softgreen.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
