@@ -1,17 +1,13 @@
 html{
     scroll-behavior: smooth;
-
     background-color: whitesmoke;
     font-family: arial , sans-serif;
+    overflow-x: hidden;
 }
 
-
-
 body{
-
 margin: 0;
 padding: 0;
-
 }
 
 .pricing{
