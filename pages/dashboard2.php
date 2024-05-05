@@ -16,6 +16,18 @@ if(isset($_GET['logout'])){
 }
 ?>
 
+<script>
+    window.onload =function(){
+        for(var i = 1 ; i <= 2 ; i++){
+            boxtoggle('Soil2' , 'Soil1' , 'solid3');
+            boxtoggle('Weather2' , 'Weather1' , 'Weather3');
+            boxtoggle('Statistics2' , 'Statistics1' , 'Statistics3');
+            boxtoggle('Switch2' , 'Switch1' , 'Switch3');
+            boxtoggle('Automation2' , 'Automation1' , 'Automation3');
+        }
+    }
+</script>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -83,31 +95,48 @@ echo '<h1> Hello '.$name. '</h1>';
     <h1 id="SensorVal1"></h1>
 </div>
 
-<div  onclick="boxtoggle('Soil2' , 'Soil1' , 'solid3')" class = "ExpandBackground" id = "Soil2">
+<div class = "ExpandBackground" id = "Soil2">
 <div class="expandedbox" id = "solid3" >
+    
     <img width="100" height="100" src="https://img.icons8.com/ios/100/soil.png" alt="soil"/>
+
     <div class="moistureBox">
-        <div>
-            <h1>Current moisture </h1>
-            <h1 id="SensorVal2"></h1>
+
+    <img width="100" height="100" src="https://img.icons8.com/plasticine/100/back.png" alt="back" onclick="boxtoggle('Soil2' , 'Soil1' , 'solid3')"/>
+    
+
+        <div  class = "ExtendedBoxHeader">
+            
+
+            <div class = "ExtHeaderTxt">
+                <h1>Current moisture </h1>
+                <h1 id="SensorVal2"></h1>
+            </div>
+
         </div>
+
         <div class="sensorDividor">
+
             <div class="sensorContent">
                 <h1> 1h </h1>
                 <h1>dummy</h1>
             </div>
+
             <div class="sensorContent">
                 <h1> 3h </h1>
                 <h1>dummy</h1>
             </div>
+
             <div class="sensorContent">
                 <h1> 5h </h1>
                 <h1>dummy</h1>
             </div>
+
             <div class="sensorContent">
                 <h1> 7h </h1>
                 <h1>dummy</h1>
             </div>
+
         </div>
 
         <div>
@@ -129,6 +158,10 @@ echo '<h1> Hello '.$name. '</h1>';
 
 <!-- Weather -->
 
+<script>
+
+</script>
+
 <div onclick="boxtoggle('Weather1' , 'Weather2')" class="initialbox" id = "Weather1">
 
 <img width="90" height="90" src="https://img.icons8.com/ios-glyphs/90/chance-of-storm.png" alt="chance-of-storm"/>
@@ -136,15 +169,16 @@ echo '<h1> Hello '.$name. '</h1>';
 <h1 id="SensorVal1"></h1>
 </div>
 
-<div onclick="boxtoggle('Weather2' , 'Weather1' , 'Weather3')" class = "ExpandBackground" id = "Weather2">
+<div class = "ExpandBackground" id = "Weather2">
 <div  class = "expandedbox" id = "Weather3" >
 
 <img width="90" height="90" src="https://img.icons8.com/ios-glyphs/90/chance-of-storm.png" alt="chance-of-storm"/>
 <div class = "moistureBox">
 
-    <div>
+    <img width="100" height="100" src="https://img.icons8.com/plasticine/100/back.png" alt="back" onclick="boxtoggle('Weather2' , 'Weather1' , 'Weather3')"/>
+
+    <div class = "ExtendedBoxHeader">
     <h1>Weather Forecast </h1>
-    <h1 id="SensorVal2"></h1>
     </div>
 
     <div class = "sensorDividor">
@@ -163,32 +197,41 @@ echo '<h1> Hello '.$name. '</h1>';
 
     </div>
 
-</div>
+    <input type="text" id="city" placeholder="Location" value="">
 
 </div>
 
 </div>
+
+</div>
+
+
+
+
 
 <!-- ADD FILLABLE TYPES SO THAT USERS CAN ENTER THEIR LOCATION FOR ACCURATE FORECAST BUT ALSO HAVE METHODS TO PREVENT THEM FROM ENTERING EXACT LOCATIONS IF THEY DON'T CHOOSE TO -->
 
 
 <!-- Statistics -->
 
-<div onclick="boxtoggle('Statistics1' , 'Statistics2')" class="initialbox" id = "Statistics1">
+<!-- onclick="boxtoggle('Statistics1' , 'Statistics2')" -->
+<div  class="initialbox" id = "Statistics1">
 
 <img width="100" height="100" src="https://img.icons8.com/ios/100/combo-chart--v1.png" alt="combo-chart--v1"/>
 <h2>Statistics</h2>
+<h1>COMING SOON</h1>
 </div>
 
-<div onclick="boxtoggle('Statistics2' , 'Statistics1' , 'Statistics3')" class = "ExpandBackground" id = "Statistics2">
+<div  class = "ExpandBackground" id = "Statistics2">
 <div  class = "expandedbox" id = "Statistics3" >
 
 <img width="90" height="90" src="https://img.icons8.com/ios-glyphs/90/chance-of-storm.png" alt="chance-of-storm"/>
 <div class = "moistureBox">
 
+    <img width="100" height="100" src="https://img.icons8.com/plasticine/100/back.png" alt="back" onclick="boxtoggle('Statistics2' , 'Statistics1' , 'Statistics3')"/>
+
     <div>
-    <h1>Weather Forecast </h1>
-    <h1 id="SensorVal2"></h1>
+    <h1>Statistics</h1>
     </div>
 
     <div class = "sensorDividor">
@@ -214,15 +257,16 @@ echo '<h1> Hello '.$name. '</h1>';
 <h2>Switch</h2>
 </div>
 
-<div onclick="boxtoggle('Switch2' , 'Switch1' , 'Switch3')" class = "ExpandBackground" id = "Switch2">
+<div  class = "ExpandBackground" id = "Switch2">
 <div  class = "expandedbox" id = "Switch3" >
 
 <img width="100" height="100" src="https://img.icons8.com/ios/100/switches.png" alt="switches"/>
 <div class = "moistureBox">
 
+    <img width="100" height="100" src="https://img.icons8.com/plasticine/100/back.png" alt="back" onclick="boxtoggle('Switch2' , 'Switch1' , 'Switch3')"/>
+
     <div>
-    <h1>Weather Forecast </h1>
-    <h1 id="SensorVal2"></h1>
+    <h1>Switch</h1>
     </div>
 
     <div class = "sensorDividor">
@@ -254,21 +298,24 @@ echo '<h1> Hello '.$name. '</h1>';
 
 <!-- Automation -->
 
-<div onclick="boxtoggle('Automation1' , 'Automation2')" class="initialbox" id = "Automation1">
+<!--  onclick="boxtoggle('Automation1' , 'Automation2')" -->
+<div class="initialbox" id = "Automation1">
 
 <img width="100" height="100" src="https://img.icons8.com/ios/100/robot-3.png" alt="robot-3"/>
 <h2>Automation</h2>
+<h1>COMING SOON</h1>
 </div>
 
-<div onclick="boxtoggle('Automation2' , 'Automation1' , 'Automation3')" class = "ExpandBackground" id = "Automation2">
+<div class = "ExpandBackground" id = "Automation2">
 <div  class = "expandedbox" id = "Automation3" >
 
 <img width="100" height="100" src="https://img.icons8.com/ios/100/robot-3.png" alt="robot-3"/>
 <div class = "moistureBox">
 
+    <img width="100" height="100" src="https://img.icons8.com/plasticine/100/back.png" alt="back" onclick="boxtoggle('Automation2' , 'Automation1' , 'Automation3')"/>
+
     <div>
-    <h1>Weather Forecast </h1>
-    <h1 id="SensorVal2"></h1>
+    <h1>Automation</h1>
     </div>
 
     <div class = "sensorDividor">

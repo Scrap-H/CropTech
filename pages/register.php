@@ -59,7 +59,14 @@
             <span id="verificationStatus"></span>
         </div>
         
-        <input type="submit" id="regButton" name="submit" disabled>
+
+        <div>
+
+      <!-- TERM OF SERVICE -->
+        </div>
+
+
+        <input type="submit" id="regButton" name="submit"  class = "Sumbitton" disabled >
 
         
     </form>

@@ -1,6 +1,6 @@
 .initialbox{
     display: block;
-    width: 15%;
+    width: 50%;
     padding: 20px;
     margin-bottom: 20px;
     border: 5px solid black;
@@ -24,7 +24,6 @@
     width: 90%;
     height: 100%;
     padding: 20px;
-    cursor: pointer;
     text-align: center;
     z-index: 2;
 }
@@ -41,21 +40,12 @@
     z-index: 3;
 }
 
-
-
-
-
-
-
-
-
-
-
 .DashboardContent{
-    padding: 30px;
+    display: grid;
+    padding: 15px;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    padding: 35px;
+    gap: 15px;
+    justify-items: center;
 }
 
 .sensorDividor{
@@ -92,3 +82,15 @@
     background-attachment: fixed;
 }
 
+.ExtendedBoxHeader{
+    display: flex;
+    justify-content: center;
+
+}
+
+
+.moistureBox img:hover{
+    cursor: pointer;
+    opacity: 30%;
+    
+}

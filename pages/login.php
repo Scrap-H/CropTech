@@ -57,7 +57,7 @@ session_start();
                         <input type="password" placeholder="password" id="password" name="password" required>
                     </div>
 
-                    <input type="submit" name="login" value="Login">
+                    <input type="submit" name="login" value="Login" class="Sumbitton">
 
 
                     <div class="BottomLogin">
@@ -68,7 +68,7 @@ session_start();
                     </div>
 
                     <p>Don't have an account ?</p>
-                <a href="register.php"><button type="button">Register</button></a>
+                <a href="register.php"><button type="button" class = "Sumbitton">Register</button></a>
                     
                 </form>
                 
@@ -80,10 +80,11 @@ session_start();
 
         </div>
 
+        <script>
 
-        
+            // REMEMBER ME FUNCTION
 
-        
+        </script>
 
 
     </body>

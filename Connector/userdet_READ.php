@@ -12,10 +12,7 @@ if (isset($_POST["login"])) {
     require_once("dbCon.php");
 
     
-
     try{
-
-        
 
     $sql = "SELECT * FROM userdetails WHERE email = :email";
     $stmt = $conn->prepare($sql);
@@ -50,6 +47,8 @@ if (isset($_POST["login"])) {
     }
 
 }
+
+
 
 
 
