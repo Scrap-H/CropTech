@@ -1,4 +1,4 @@
-This Is a final Year Project , Do not Distrubute or use without permission.
+ This Is a final Year Project , Do not Distrubute or use without permission.
 
 This project has been created with **PHP 8.3.6** so ensure that you have installed the necessary php folders to be able to run localhost. 
 
@@ -33,6 +33,9 @@ FILE : [ini file.zip](https://github.com/Scrap-H/CropTech/files/15169843/ini.fil
   FILE : [Database.zip](https://github.com/Scrap-H/CropTech/files/15215643/Database.zip)
 
 then press import
+
+note there is a feature for this demo if you register an account using : croptechad@gmail.com
+
  - Note this was made on **4/25/2024**, what you see may be different.
 
 
