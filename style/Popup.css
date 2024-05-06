@@ -38,6 +38,7 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 3;
+    overflow-y: auto;
 }
 
 .DashboardContent{
@@ -83,7 +84,7 @@
 }
 
 .ExtendedBoxHeader{
-    display: flex;
+    display: block;
     justify-content: center;
 
 }
@@ -94,3 +95,39 @@
     opacity: 30%;
     
 }
+
+.AdditionContent{
+    justify-content: center;
+}
+
+.weatherdescription{
+
+    padding: 20px;
+    border-radius: 10px;
+    border: 5px solid black;
+    text-align: center;
+
+}
+
+.WeatherBox{
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(4, 1fr);
+    
+}
+
+    .FillableModelContent{
+        width: 50%;
+        margin: 0 auto;
+    }
+
+    .FillableModelContent button{
+        width: 50%;
+        height: 20%;
+        border-radius: 10px;
+
+    }
+
+    .FillableModelContent button:hover{
+        opacity: 50%;
+    }

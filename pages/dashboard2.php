@@ -139,15 +139,29 @@ echo '<h1> Hello '.$name. '</h1>';
 
         </div>
 
+        <!-- <button class = "Sumbitton" >Add Sensor</button>
+        <button class = "Sumbitton" >Remove Sensor</button> -->
+
+        <div id="addSensor" >
+            <h3>Adding Sensor</h3>
+            <input type="text" name="SensorID" id="SensorID" placeholder = "SensorID">
+            <button>Connect</button>
+            <p>The ID can be found in the box or on the case of the sensor</p>
+        </div>
+
+        <div id="removeSensor">
+            <h3>Removing Sensor</h3>
+            <!-- Display existing sensors -->
+            <input type="text" name="SensorID" id="SensorID" placeholder = "SensorID">
+            <button>Remove</button>
+        </div>
+
         <div>
         <p>Status : </p>
     <div>GREEN</div>
     <div>YELLOW</div>
     <div>RED</div>
     </div>
-    
-
-
 
     </div>
 </div>
@@ -179,25 +193,29 @@ echo '<h1> Hello '.$name. '</h1>';
 
     <div class = "ExtendedBoxHeader">
     <h1>Weather Forecast </h1>
+
+    <h3 id = "CurrentWeather"></h1>
+    
+    <h3 id = "city"></h3>
     </div>
 
     <div class = "sensorDividor">
-
-    <div class = "sensorContent">
-        <h1> today </h1>
+    <div id = "weather" class = "WeatherBox"></div>
     </div>
 
-    <div class = "sensorContent">
-        <h1> tomorrow </h1>
+    <div class = "FillableModelContent">
+        <h5 id = "error"></h5>
+
+        <h3>Enter City</h3>
+         <input type="text" name="city" id="cityInput">
+
+        <button onclick = "fetchForecast() , fetchWeather()">Get Weather</button>
     </div>
 
-    <div class = "sensorContent">
-        <h1> day after </h1>
-    </div>
+    
+    
 
-    </div>
-
-    <input type="text" id="city" placeholder="Location" value="">
+    <script src = "../API\openweathermap\Get_Forecast.js"></script>
 
 </div>
 
@@ -336,6 +354,67 @@ echo '<h1> Hello '.$name. '</h1>';
 </div>
 
 
+
+
+<!-- Adding Sensors (ADMIN) -->
+<?php
+    if($_SESSION['role'] === 'ADMIN'):
+?>
+<div class="initialbox" onclick="boxtoggle('Addition1' , 'Addition2')" id = "Addition1" >
+
+<img width="100" height="100" src="https://img.icons8.com/ios/100/add--v1.png" alt="add--v1"/>
+<h2>Sensor Addition</h2>
+</div>
+
+<div class = "ExpandBackground" id = "Addition2">
+<div  class = "expandedbox" id = "Addition3" >
+
+<img width="100" height="100" src="https://img.icons8.com/ios/100/add--v1.png" alt="add--v1"/>
+<div class = "moistureBox">
+
+    <img width="100" height="100" src="https://img.icons8.com/plasticine/100/back.png" alt="back" onclick="boxtoggle('Addition1' , 'Addition2' , 'Addition3')"/>
+
+    <div>
+    <h1>Sensor Addition</h1>
+    </div>
+
+    <div class = "sensorDividor">
+
+            <div>
+
+            <h1> Enter Details below </h1>
+
+            <div class = "AdditionContent">
+
+            <h3>Type</h3>
+        <input type="radio" id="OptSoilMoisture" name="option" value="soil_moisture">
+        <label for="">Soil Moisture</label><br>
+        <input type="radio" id="Irrigation" name="option" value="Irrigation">
+        <label for="">Irrigation</label>
+
+        <h3>HostName</h3>
+        <input type="text" id="Sensor_HostName" placeholder="HOSTNAME">
+        <h3>Password</h3>
+        <input type="text" id="Sensor_Password" placeholder="PASSWORD">
+
+        <a href=""><button type="button" class = "Sumbitton">Add</button></a>
+
+
+        </div>
+    </div>
+        
+
+    </div>
+
+</div>
+
+</div>
+
+</div>
+
+<?php
+    endif;
+?>
 
 <!-- Logout -->
 
