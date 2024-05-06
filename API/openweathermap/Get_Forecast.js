@@ -14,6 +14,8 @@ const CurrentWeatherDisplay = document.getElementById('CurrentWeather');
 const units = 'metric'; //imperial or metric
 let temperatureSymobol = units == 'imperial' ? "°F" : "°C";
 
+
+
 async function fetchForecast() {
     try {
         WeatherDisplay.innerHTML = '';
@@ -48,6 +50,8 @@ async function fetchForecast() {
     }
 
 }
+
+
 
 function convertToLocalTime(dt) {
 

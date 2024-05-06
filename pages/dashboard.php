@@ -16,9 +16,20 @@ if(isset($_GET['logout'])){
 }
 ?>
 
+<script>
+    window.onload =function(){
+        for(var i = 1 ; i <= 2 ; i++){
+            boxtoggle('Soil2' , 'Soil1' , 'solid3');
+            boxtoggle('Weather2' , 'Weather1' , 'Weather3');
+            boxtoggle('Statistics2' , 'Statistics1' , 'Statistics3');
+            boxtoggle('Switch2' , 'Switch1' , 'Switch3');
+            boxtoggle('Automation2' , 'Automation1' , 'Automation3');
+        }
+    }
+</script>
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,13 +45,11 @@ if(isset($_GET['logout'])){
 
     <link rel="icon" href="../assets\images\Icon.png" sizes="32x32" type="image/png">
 
-
-
 </head>
 
-<body>
+<body class = "dashboard">
     
- <!-- USER GREETING -->
+<!-- USER GREETING -->
 
 <div class = "greeting">
 
@@ -51,19 +60,11 @@ echo '<h1> Hello '.$name. '</h1>';
 
 </div>
 
-    <div class = "dashboardBackground dashboardlayout">
+<div class = "DashboardContent">
 
-        
-        <div class = "Icons" >
+<!-- Soil Moisture -->
 
-        <a href="">
-        <img width="100" height="100" src="https://img.icons8.com/ios/100/soil.png" alt="soil"/>
-        <h1 id="SensorVal" class = "TempVal"></h1>
-        <h2>Soil Moisture</h2>
-        </a>
-                    
-
-        <script>
+<script>
             function fetchSensorVal(lastIndex){
                 const url = '../../API/sensorReaction/ReadArr.php?lastIndex=' + lastIndex + '&t=' + new Date().getTime();
                 fetch(url)
@@ -71,7 +72,24 @@ echo '<h1> Hello '.$name. '</h1>';
                 .then(data => {
 
                     if(data.value !== null){
-                        document.getElementById('SensorVal').textContent = data.value + "%";
+
+                        if(data.value <= 5){
+                            condition = "Critical Low Check Irrigation";
+                        }else if(data.value <= 20){
+                            condition = "Low Moisture";
+                        }else if(data.value <= 40){
+                            condition = "Balance moisture";
+                        }else if(data.value <= 60){
+                            condition = "High Moisture";
+                        }else if(data.value <= 80){
+                            condition = "Extremely High Mositure";
+                        }
+
+
+                        document.getElementById('SensorVal1').textContent = data.value + "%" ;
+                        document.getElementById('Condition1').textContent = condition;
+                        document.getElementById('SensorVal2').textContent = data.value + "%"; 
+                        document.getElementById('Condition2').textContent = condition;
                         setTimeout(() => fetchSensorVal(data.index), 30 * 60 * 1000 );
                                     
                     }else{
@@ -87,73 +105,358 @@ echo '<h1> Hello '.$name. '</h1>';
             fetchSensorVal(0);
         </script>
 
-        </div>
+<div onclick="boxtoggle('Soil1' , 'Soil2')" class="initialbox" id = "Soil1">
+    <img width="100" height="100" src="https://img.icons8.com/ios/100/soil.png" alt="soil"/>
+    <h2>Soil Moisture</h2>
+    <h1 id="SensorVal1"></h1>
+    <h3 id="Condition1"></h3>
+</div>
 
-         <!-- statistics -->
+<div class = "ExpandBackground" id = "Soil2">
+<div class="expandedbox" id = "solid3" >
+    
+    <img width="100" height="100" src="https://img.icons8.com/ios/100/soil.png" alt="soil"/>
 
-       <div onclick="DisplayPopup()" class = "Icons">
+    <div class="moistureBox">
 
-       <a href="">
-       <img width="100" height="100" src="https://img.icons8.com/ios/100/combo-chart--v1.png" alt="combo-chart--v1"/>
-       <h1>statistics</h1>
-       </a>    
+    <img width="100" height="100" src="https://img.icons8.com/plasticine/100/back.png" alt="back" onclick="boxtoggle('Soil2' , 'Soil1' , 'solid3')"/>
+    
 
-       </div>
+        <div  class = "ExtendedBoxHeader">
+            
 
-        <!-- Switch -->
-       
-       <div class = "Icons">
-
-       <a href="">
-       <img width="100" height="100" src="https://img.icons8.com/ios/100/switches.png" alt="switches"/>
-       <h1>switch</h1>                 
-       </a>                 
-
-       </div> 
-
-        <!-- Weather -->
-
-       <div class = "Icons">
-
-        <a href="">
-        <img width="100" height="100" src="https://img.icons8.com/ios/100/partly-cloudy-day--v1.png" alt="partly-cloudy-day--v1"/>                
-        <h1>weather</h1>                
-        </a>
-       
-       </div> 
-
-        <!-- Automation -->
-
-       <div class = "Icons">
-
-       <a href="">
-       <img width="100" height="100" src="https://img.icons8.com/ios/100/robot-3.png" alt="robot-3"/>
-       <h1>Automation timetable</h1>                 
-       </a>
-       
-       </div> 
-
-
-       <?php 
-        if($_SESSION['role'] === 'ADMIN'):
-        ?>
-
-        <div class = "Icons"> 
-
-        <a href="https://accounts.google.com/v3/signin/identifier?hl=en_GB&ifkv=ARZ0qKJ5PT5oUMrBg575ewqh6wKDlllGxrZ_hlagmyf4GJitM-GQXvWCstEbrAjx-vF0mCkx80xw&flowName=GlifWebSignIn&flowEntry=ServiceLogin&dsh=S-503238949%3A1713818496159177&theme=mn&ddm=0" target="_blank">
-        <img width="100" height="100" src="https://img.icons8.com/ios/100/mail.png" alt="mail"/>
-        <h1>Admin email</h1>    
-        </a>
+            <div class = "ExtHeaderTxt">
+                <h1>Current moisture </h1>
+                <h1 id="SensorVal2"></h1>
+                <p id="Condition2"></p>
+            </div>
 
         </div>
 
-        <?php 
-        endif; 
-        ?>
+        <div class="sensorDividor">
 
-         <!-- Logout -->
+            <div class="sensorContent">
+                <h1> 1h </h1>
+                <h1>dummy</h1>
+            </div>
 
-       <div class = "Icons">
+            <div class="sensorContent">
+                <h1> 3h </h1>
+                <h1>dummy</h1>
+            </div>
+
+            <div class="sensorContent">
+                <h1> 5h </h1>
+                <h1>dummy</h1>
+            </div>
+
+            <div class="sensorContent">
+                <h1> 7h </h1>
+                <h1>dummy</h1>
+            </div>
+
+        </div>
+
+        <div>
+        <button class = "Sumbitton" onclick="toggleSensorDiv('addSensor')">Add Sensor</button>
+        <button class = "Sumbitton" onclick="toggleSensorDiv('removeSensor')">Remove Sensor</button>
+        </div>
+        
+
+        <div id="addSensor" style="display: none;">
+            <h3>Adding Sensor</h3>
+            <p>The ID can be found in the box or on the case of the sensor</p>
+            <input type="text" name="SensorID" id="SensorID" placeholder = "SensorID">
+            <button>Connect</button>
+            
+        </div>
+
+        <div id="removeSensor" style="display: none;">
+            <h3>Removing Sensor</h3>
+            <p>Please check the Sensor ID in the box or case of the sensor</p>
+            <input type="text" name="SensorID" id="SensorID" placeholder = "SensorID">
+            <button>Remove</button>
+        </div>
+
+    </div>
+</div>
+</div>
+
+<script>
+    function toggleSensorDiv(box1) {
+
+    var Box1 = document.getElementById(box1);
+
+    if (Box1.style.display === 'none') {
+        Box1.style.display = 'block';
+    } else {
+        Box1.style.display = 'none';
+    }
+}
+</script>
+
+<!-- INCLUDE CONNECTION BUTTON FOR ARDUINO / RASBERRY PIE -->
+
+<!-- Weather -->
+
+
+<div onclick="boxtoggle('Weather1' , 'Weather2')" class="initialbox" id = "Weather1">
+
+<img width="90" height="90" src="https://img.icons8.com/ios-glyphs/90/chance-of-storm.png" alt="chance-of-storm"/>
+<h2>Forecast</h2>
+<h1 id="CurrentWeather"></h1>
+</div>
+
+<div class = "ExpandBackground" id = "Weather2">
+<div  class = "expandedbox" id = "Weather3" >
+
+<img width="90" height="90" src="https://img.icons8.com/ios-glyphs/90/chance-of-storm.png" alt="chance-of-storm"/>
+<div class = "moistureBox">
+
+    <img width="100" height="100" src="https://img.icons8.com/plasticine/100/back.png" alt="back" onclick="boxtoggle('Weather2' , 'Weather1' , 'Weather3')"/>
+
+    <div class = "ExtendedBoxHeader">
+    <h1>Weather Forecast </h1>
+
+    <h3 id = "CurrentWeather"></h1>
+    
+    <h3 id = "city"></h3>
+    </div>
+
+    <div class = "sensorDividor">
+    <div id = "weather" class = "WeatherBox"></div>
+    </div>
+
+    <div class = "FillableModelContent">
+        <h5 id = "error"></h5>
+
+        <h3>Enter City</h3>
+         <input type="text" name="city" id="cityInput">
+
+        <button onclick = "fetchForecast()">Get Weather</button>
+        <button>Add More details</button>
+
+        <div>
+            <p>Please fill in the 2 boxes for more accurate reading</p>
+        <input type="text" name="city" id="State">
+        <input type="text" name="city" id="Zipcode">
+
+        <p>Please note that these information will be saved for future convience and live data display</p>
+        <p>By clicking accept below you agree that you are happy to have these details saved into our system</p>
+        <p>If you wish to remove these information please contact support at : croptechad@gmail.com</p>
+        <button onclick = "fetchForecast()">Get Weather</button>
+
+        </div>
+    </div>
+
+    
+    
+
+
+
+</div>
+
+</div>
+
+</div>
+
+<script src = "../API\openweathermap\Get_Forecast.js"></script>
+
+
+
+<!-- ADD FILLABLE TYPES SO THAT USERS CAN ENTER THEIR LOCATION FOR ACCURATE FORECAST BUT ALSO HAVE METHODS TO PREVENT THEM FROM ENTERING EXACT LOCATIONS IF THEY DON'T CHOOSE TO -->
+
+
+<!-- Statistics -->
+
+<!-- onclick="boxtoggle('Statistics1' , 'Statistics2')" -->
+<div  class="initialbox" id = "Statistics1">
+
+<img width="100" height="100" src="https://img.icons8.com/ios/100/combo-chart--v1.png" alt="combo-chart--v1"/>
+<h2>Statistics</h2>
+<h1>COMING SOON</h1>
+</div>
+
+<div  class = "ExpandBackground" id = "Statistics2">
+<div  class = "expandedbox" id = "Statistics3" >
+
+<img width="90" height="90" src="https://img.icons8.com/ios-glyphs/90/chance-of-storm.png" alt="chance-of-storm"/>
+<div class = "moistureBox">
+
+    <img width="100" height="100" src="https://img.icons8.com/plasticine/100/back.png" alt="back" onclick="boxtoggle('Statistics2' , 'Statistics1' , 'Statistics3')"/>
+
+    <div>
+    <h1>Statistics</h1>
+    </div>
+
+    <div class = "sensorDividor">
+
+    <div class = "sensorContent">
+        <h1> DISPLAY CHART  </h1>
+    </div>
+
+    </div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- Switch -->
+
+<div onclick="boxtoggle('Switch1' , 'Switch2')" class="initialbox" id = "Switch1">
+
+<img width="100" height="100" src="https://img.icons8.com/ios/100/switches.png" alt="switches"/>
+<h2>Switch</h2>
+</div>
+
+<div  class = "ExpandBackground" id = "Switch2">
+<div  class = "expandedbox" id = "Switch3" >
+
+<img width="100" height="100" src="https://img.icons8.com/ios/100/switches.png" alt="switches"/>
+<div class = "moistureBox">
+
+    <img width="100" height="100" src="https://img.icons8.com/plasticine/100/back.png" alt="back" onclick="boxtoggle('Switch2' , 'Switch1' , 'Switch3')"/>
+
+    <div>
+    <h1>Switch</h1>
+    </div>
+
+    <div class = "sensorDividor">
+
+    <div>
+        <p>Status : </p>
+    <div>GREEN</div>
+    <div>YELLOW</div>
+    <div>RED</div>
+    </div>
+    
+
+    <div class = "sensorContent">
+        <h1> Irrigation Switch  </h1>
+        <button>On</button>
+    </div>
+
+
+    <!-- Connect Irrigation same as sensors -->
+
+    </div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- Automation -->
+
+<!--  onclick="boxtoggle('Automation1' , 'Automation2')" -->
+<div class="initialbox" id = "Automation1">
+
+<img width="100" height="100" src="https://img.icons8.com/ios/100/robot-3.png" alt="robot-3"/>
+<h2>Automation</h2>
+<h1>COMING SOON</h1>
+</div>
+
+<div class = "ExpandBackground" id = "Automation2">
+<div  class = "expandedbox" id = "Automation3" >
+
+<img width="100" height="100" src="https://img.icons8.com/ios/100/robot-3.png" alt="robot-3"/>
+<div class = "moistureBox">
+
+    <img width="100" height="100" src="https://img.icons8.com/plasticine/100/back.png" alt="back" onclick="boxtoggle('Automation2' , 'Automation1' , 'Automation3')"/>
+
+    <div>
+    <h1>Automation</h1>
+    </div>
+
+    <div class = "sensorDividor">
+
+    <div class = "sensorContent">
+        <h1> Display timetable of Automation  </h1>
+    </div>
+
+
+    <!-- Connect Irrigation same as sensors -->
+
+    </div>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+
+<!-- Adding Sensors (ADMIN) -->
+<?php
+    if($_SESSION['role'] === 'ADMIN'):
+?>
+<div class="initialbox" onclick="boxtoggle('Addition1' , 'Addition2')" id = "Addition1" >
+
+<img width="100" height="100" src="https://img.icons8.com/ios/100/add--v1.png" alt="add--v1"/>
+<h2>Sensor Addition</h2>
+</div>
+
+<div class = "ExpandBackground" id = "Addition2">
+<div  class = "expandedbox" id = "Addition3" >
+
+<img width="100" height="100" src="https://img.icons8.com/ios/100/add--v1.png" alt="add--v1"/>
+<div class = "moistureBox">
+
+    <img width="100" height="100" src="https://img.icons8.com/plasticine/100/back.png" alt="back" onclick="boxtoggle('Addition1' , 'Addition2' , 'Addition3')"/>
+
+    <div>
+    <h1>Sensor Addition</h1>
+    </div>
+
+    <div class = "sensorDividor">
+
+            <div>
+
+            <h1> Enter Details below </h1>
+
+            <div class = "AdditionContent">
+
+            <h3>Type</h3>
+        <input type="radio" id="OptSoilMoisture" name="option" value="soil_moisture">
+        <label for="">Soil Moisture</label><br>
+        <input type="radio" id="Irrigation" name="option" value="Irrigation">
+        <label for="">Irrigation</label>
+
+        <h3>HostName</h3>
+        <input type="text" id="Sensor_HostName" placeholder="HOSTNAME">
+        <h3>Password</h3>
+        <input type="text" id="Sensor_Password" placeholder="PASSWORD">
+
+        <a href=""><button type="button" class = "Sumbitton">Add</button></a>
+
+
+        </div>
+    </div>
+        
+
+    </div>
+
+</div>
+
+</div>
+
+</div>
+
+<?php
+    endif;
+?>
+
+<!-- Logout -->
+
+
+<div class = "initialbox">
 
         <a href="?logout=true">
         <img width="100" height="100" src="https://img.icons8.com/ios/100/exit--v1.png" alt="exit--v1"/>
@@ -165,7 +468,12 @@ echo '<h1> Hello '.$name. '</h1>';
         
     </div>
 
-    <footer>
+
+</div>
+
+</body>
+
+<footer>
             <div class="footerText">
                 <h1> Contact us </h1>
                 <h5>email : mervin.chung729@gmail.com</h5>
@@ -177,6 +485,4 @@ echo '<h1> Hello '.$name. '</h1>';
 
         </footer>
 
-
-</body>
 </html>

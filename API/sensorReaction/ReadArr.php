@@ -43,5 +43,4 @@ $data = ReadArr($filepath , $lastIndex);
 echo json_encode($data);
 
 
-
 ?>
