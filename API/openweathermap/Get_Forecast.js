@@ -1,7 +1,5 @@
-//CODE BELOW HAS BEEN COPIED AND MODIFED FROM " Andy Truong "
+//CODE BELOW HAS BEEN COPIED AND MODIFED FROM " Andy Truong " , 29/04/2024
 // YOUTUBE THAT WAS FOLLWED : https://www.youtube.com/watch?v=JubKY5p3qRc
-
-
 
 
  const apiKey = '76a234bebf97e7c7949f9c7ef66d2498';
@@ -35,9 +33,9 @@ async function fetchForecast() {
 
 
         const cnt = 8;
-        const cityInputtedByUser = document.getElementById('cityInput').value;
+        const InputtedCity = document.getElementById('cityInput').value;
 
-        const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cityInputtedByUser}&appid=${apiKey}&units=${units}&cnt=${cnt}`;
+        const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${InputtedCity}&appid=${apiKey}&units=${units}&cnt=${cnt}`;
 
         const response = await fetch(apiUrl);
         const data = await response.json();
@@ -64,37 +62,39 @@ async function fetchForecast() {
 
 
 async function fetchForecastPlus() {
-    // try {
-    //     WeatherDisplay.innerHTML = '';
-    //     error.innerHTML = '';
-    //     city.innerHTML = '';
+    try {
+        WeatherDisplay.innerHTML = '';
+        error.innerHTML = '';
+        city.innerHTML = '';
 
 
-    //     const cnt = 8;
-    //     const cityInputtedByUser = document.getElementById('cityInput').value;
+        const cnt = 8;
+        const InputtedCity = document.getElementById('cityInput').value;
+        const InputtedState = document.getElementById('stateInput').value;
+        const InputtedZipCode = document.getElementById('zipcodeInput').value;
 
-    //     const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cityInputtedByUser}&appid=${apiKey}&units=${units}&cnt=${cnt}`;
+        const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${InputtedCity}&appid=${apiKey}&units=${units}&cnt=${cnt}`;
 
-    //     const response = await fetch(apiUrl);
-    //     const data = await response.json();
+        const response = await fetch(apiUrl);
+        const data = await response.json();
 
-    //     if (data.cod == '400' || data.cod == '404') {
-    //         error.innerHTML = `City Entered is Invalid`;
-    //         return;
-    //     }
+        if (data.cod == '400' || data.cod == '404') {
+            error.innerHTML = `The values that you have entered are invalid , please check your inputs`;
+            return;
+        }
 
-    //     data.list.forEach(hourlyWeatherData => {
-    //         const hourlyWeatherDataDiv = createForecastDescription(hourlyWeatherData);
-    //         WeatherDisplay.appendChild(hourlyWeatherDataDiv);
-    //     });
+        data.list.forEach(hourlyWeatherData => {
+            const hourlyWeatherDataDiv = createForecastDescription(hourlyWeatherData);
+            WeatherDisplay.appendChild(hourlyWeatherDataDiv);
+        });
 
-    //     city.innerHTML = `Hourly Weather for ${data.city.name}`;
+        city.innerHTML = `Hourly Weather for ${data.city.name} , ${data.state.name}`;
 
         
 
-    // } catch (error) {
-    //     console.log(error);
-    // }
+    } catch (error) {
+        console.log(error);
+    }
 
 }
 

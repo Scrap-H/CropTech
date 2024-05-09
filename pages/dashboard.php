@@ -247,8 +247,8 @@ echo '<h1> Hello '.$name. '</h1>';
         <div  id = "WeatherPlus" style = "display:none;">
 
         <input type="text" name="city" id="cityInput"  placeholder = "City">
-        <input type="text" name="city" id="State" placeholder = "State">
-        <input type="text" name="city" id="Zipcode" placeholder = "Zipcode">
+        <input type="text" name="city" id="stateInput" placeholder = "State">
+        <input type="text" name="city" id="zipcodeInput" placeholder = "Zipcode">
 
 
 

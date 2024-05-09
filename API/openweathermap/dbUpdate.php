@@ -2,7 +2,10 @@
 
 //Connect to db 
 
-// cehck if db is empty
+
+
+// cehck if db is empty from the user ID that is and will be set when 
+// logged in and given to the user as a special login 
 
 //if yes then update it
 
