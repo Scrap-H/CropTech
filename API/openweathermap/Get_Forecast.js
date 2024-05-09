@@ -15,6 +15,17 @@ const units = 'metric'; //imperial or metric
 let temperatureSymobol = units == 'imperial' ? "°F" : "°C";
 
 
+function forecastOpt(opt){
+    if(opt === 1){
+        fetchForecast();
+    }else{
+        fetchForecastPlus();
+    }
+}
+
+
+
+
 
 async function fetchForecast() {
     try {
@@ -52,6 +63,41 @@ async function fetchForecast() {
 }
 
 
+async function fetchForecastPlus() {
+    // try {
+    //     WeatherDisplay.innerHTML = '';
+    //     error.innerHTML = '';
+    //     city.innerHTML = '';
+
+
+    //     const cnt = 8;
+    //     const cityInputtedByUser = document.getElementById('cityInput').value;
+
+    //     const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cityInputtedByUser}&appid=${apiKey}&units=${units}&cnt=${cnt}`;
+
+    //     const response = await fetch(apiUrl);
+    //     const data = await response.json();
+
+    //     if (data.cod == '400' || data.cod == '404') {
+    //         error.innerHTML = `City Entered is Invalid`;
+    //         return;
+    //     }
+
+    //     data.list.forEach(hourlyWeatherData => {
+    //         const hourlyWeatherDataDiv = createForecastDescription(hourlyWeatherData);
+    //         WeatherDisplay.appendChild(hourlyWeatherDataDiv);
+    //     });
+
+    //     city.innerHTML = `Hourly Weather for ${data.city.name}`;
+
+        
+
+    // } catch (error) {
+    //     console.log(error);
+    // }
+
+}
+
 
 function convertToLocalTime(dt) {
 
@@ -75,7 +121,6 @@ function createForecastDescription(weatherData) {
 
     const description = document.createElement("div");
     const convertedDateAndTime = convertToLocalTime(dt);
-
 
 
     description.innerHTML = `

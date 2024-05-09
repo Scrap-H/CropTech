@@ -228,26 +228,75 @@ echo '<h1> Hello '.$name. '</h1>';
     </div>
 
     <div class = "FillableModelContent">
+
         <h5 id = "error"></h5>
 
         <h3>Enter City</h3>
-         <input type="text" name="city" id="cityInput">
 
-        <button onclick = "fetchForecast()">Get Weather</button>
-        <button>Add More details</button>
+        <div id = "WeatherInitialSection">
+        <input type="text" name="city" id="cityInput" placeholder = "City">
+        <button onclick = "fetchForecast(1) ">Get Weather</button>
+        </div>
+         
 
-        <div>
-            <p>Please fill in the 2 boxes for more accurate reading</p>
-        <input type="text" name="city" id="State">
-        <input type="text" name="city" id="Zipcode">
+
+        <button id = "MoreDetails" onclick = "AppearDissapearOtherEffect('WeatherPlus' , 'WeatherInitialSection')">Add More details</button>
+
+
+
+        <div  id = "WeatherPlus" style = "display:none;">
+
+        <input type="text" name="city" id="cityInput"  placeholder = "City">
+        <input type="text" name="city" id="State" placeholder = "State">
+        <input type="text" name="city" id="Zipcode" placeholder = "Zipcode">
+
+
 
         <p>Please note that these information will be saved for future convience and live data display</p>
-        <p>By clicking accept below you agree that you are happy to have these details saved into our system</p>
+        <p>By clicking "get Weather" below you agree that you are happy to have these details saved into our system</p>
         <p>If you wish to remove these information please contact support at : croptechad@gmail.com</p>
-        <button onclick = "fetchForecast()">Get Weather</button>
+
+        <button onclick = "fetchMoreDetails(2)">Get Weather</button>
+
+        
 
         </div>
+
     </div>
+
+    <script>
+    function AppearDissapear(element) {
+        var b1 = document.getElementById(element);
+
+        if (b1.style.display === 'none' || b1.style.display === '') {
+
+            b1.style.display = 'block';
+        } else {
+
+            b1.style.display = 'none';
+        }
+    }
+
+    function AppearDissapearOtherEffect(TriggerID, AffectedID) {
+        
+    var trigger = document.getElementById(TriggerID);
+    var affected = document.getElementById(AffectedID);
+
+    if (affected.style.display === 'none' || affected.style.display === '') {
+
+        trigger.style.display = 'none'; 
+        affected.style.display = 'block'; 
+
+    } else {
+
+        trigger.style.display = 'block';
+        affected.style.display = 'none';
+
+    }
+}
+
+</script>
+
 
     
     
