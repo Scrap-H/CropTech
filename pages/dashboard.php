@@ -26,6 +26,8 @@ if(isset($_GET['logout'])){
             boxtoggle('Switch2' , 'Switch1' , 'Switch3');
             boxtoggle('Automation2' , 'Automation1' , 'Automation3');
             boxtoggle('Setting2' , 'Setting1' , 'Setting3');
+
+            boxtoggle('Addition2' , 'Addition1' , 'Addition3');
         }
     }
 </script>
@@ -57,8 +59,7 @@ if(isset($_GET['logout'])){
 
 <?php
 $name = $_SESSION["User_firstName"];
-$ID = $_SESSION["user_id"];
-echo '<h1> Hello '.$name.' ID:( '.$ID.' )</h1>';
+echo '<h1> Hello '.$name.'</h1>';
 ?>
 
 </div>
@@ -422,7 +423,7 @@ echo '<h1> Hello '.$name.' ID:( '.$ID.' )</h1>';
             
 
             <div class = "ExtHeaderTxt">
-                <h1>Current moisture </h1>
+                <h1>Settings </h1>
                 <h1 id="SensorVal2"></h1>
                 <p id="Condition2"></p>
             </div>
@@ -432,21 +433,33 @@ echo '<h1> Hello '.$name.' ID:( '.$ID.' )</h1>';
         <div class="sensorDividor">
 
             <div>
-                <h3>Settings</h3>
+
+                <?php
+                $id = $_SESSION["user_id"];
+                echo '<h4> User-ID :  '.$id.'</h4>';
+                ?>
+
+                <p>Do not share your ID as it is your own personal ID</p>
 
                 <div>
                     <h3>Personal Details</h3>
 
-                    <button>Change First Name</button>
-                    <button>Change Last Name</button>
-                    <button>Change email</button>
-                    <button>Change password</button>
-                </div>
 
-                <div>
-                    <h3>Functions</h3>
+                    <form action="../Connector/userdet_UPDATE.php">
 
-                    <button>Hide explanations</button>
+                    
+                    <input type="text" name="NewFirstName" id="NewFirstNameInput" placeholder="New FirstName">
+                    
+                    <input type="text" name="NewLastName" id="NewLastNameInput" placeholder="New LastName">
+                    
+                    <input type="text" name="Newemail" id="NewemailInput" placeholder="New Email">
+                    
+                    <input type="text" name="Newpassword" id="NewpasswordInput" placeholder="New Password">
+
+                    <button type = 'submit' id="ApplyButton">Apply</button>
+
+                    </form>
+                    
                 </div>
 
                 <div>
@@ -473,26 +486,6 @@ echo '<h1> Hello '.$name.' ID:( '.$ID.' )</h1>';
 </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!-- Adding Sensors (ADMIN) -->
 <?php
     if($_SESSION['role'] === 'ADMIN'):
@@ -509,7 +502,7 @@ echo '<h1> Hello '.$name.' ID:( '.$ID.' )</h1>';
 <img width="100" height="100" src="https://img.icons8.com/ios/100/add--v1.png" alt="add--v1"/>
 <div class = "moistureBox">
 
-    <img width="100" height="100" src="https://img.icons8.com/plasticine/100/back.png" alt="back" onclick="boxtoggle('Addition1' , 'Addition2' , 'Addition3')"/>
+    <img width="100" height="100" src="https://img.icons8.com/plasticine/100/back.png" alt="back" onclick="boxtoggle('Addition2' , 'Addition1' , 'Addition3')"/>
 
     <div>
     <h1>Sensor Addition</h1>
