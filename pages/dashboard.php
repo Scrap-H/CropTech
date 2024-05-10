@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+
 if (($_SESSION['role'] !== 'ADMIN' && $_SESSION['role'] !== 'USER')) {
     header("Location: login.php");
     exit();
@@ -24,6 +25,7 @@ if(isset($_GET['logout'])){
             boxtoggle('Statistics2' , 'Statistics1' , 'Statistics3');
             boxtoggle('Switch2' , 'Switch1' , 'Switch3');
             boxtoggle('Automation2' , 'Automation1' , 'Automation3');
+            boxtoggle('Setting2' , 'Setting1' , 'Setting3');
         }
     }
 </script>
@@ -55,7 +57,8 @@ if(isset($_GET['logout'])){
 
 <?php
 $name = $_SESSION["User_firstName"];
-echo '<h1> Hello '.$name. '</h1>';
+$ID = $_SESSION["user_id"];
+echo '<h1> Hello '.$name.' ID:( '.$ID.' )</h1>';
 ?>
 
 </div>
@@ -105,7 +108,8 @@ echo '<h1> Hello '.$name. '</h1>';
             fetchSensorVal(0);
         </script>
 
-<div onclick="boxtoggle('Soil1' , 'Soil2')" class="initialbox" id = "Soil1">
+
+<div onclick = "AppearDissapearOtherEffect('Soil1' , 'Soil2')" class="initialbox" id = "Soil1">
     <img width="100" height="100" src="https://img.icons8.com/ios/100/soil.png" alt="soil"/>
     <h2>Soil Moisture</h2>
     <h1 id="SensorVal1"></h1>
@@ -158,8 +162,8 @@ echo '<h1> Hello '.$name. '</h1>';
         </div>
 
         <div>
-        <button class = "Sumbitton" onclick="toggleSensorDiv('addSensor')">Add Sensor</button>
-        <button class = "Sumbitton" onclick="toggleSensorDiv('removeSensor')">Remove Sensor</button>
+        <button class = "Sumbitton" onclick="AppearDissapear('addSensor')">Add Sensor</button>
+        <button class = "Sumbitton" onclick="AppearDissapear('removeSensor')">Remove Sensor</button>
         </div>
         
 
@@ -182,25 +186,12 @@ echo '<h1> Hello '.$name. '</h1>';
 </div>
 </div>
 
-<script>
-    function toggleSensorDiv(box1) {
-
-    var Box1 = document.getElementById(box1);
-
-    if (Box1.style.display === 'none') {
-        Box1.style.display = 'block';
-    } else {
-        Box1.style.display = 'none';
-    }
-}
-</script>
-
 <!-- INCLUDE CONNECTION BUTTON FOR ARDUINO / RASBERRY PIE -->
 
 <!-- Weather -->
 
 
-<div onclick="boxtoggle('Weather1' , 'Weather2')" class="initialbox" id = "Weather1">
+<div onclick="AppearDissapearOtherEffect('Weather1' , 'Weather2')" class="initialbox" id = "Weather1">
 
 <img width="90" height="90" src="https://img.icons8.com/ios-glyphs/90/chance-of-storm.png" alt="chance-of-storm"/>
 <h2>Forecast</h2>
@@ -235,67 +226,32 @@ echo '<h1> Hello '.$name. '</h1>';
 
         <div id = "WeatherInitialSection">
         <input type="text" name="city" id="cityInput" placeholder = "City">
-        <button onclick = "fetchForecast(1) ">Get Weather</button>
+        <button onclick = "fetchForecast(1)" class = "Sumbitton">Get Weather</button>
         </div>
          
 
 
-        <button id = "MoreDetails" onclick = "AppearDissapearOtherEffect('WeatherPlus' , 'WeatherInitialSection')">Add More details</button>
+        <button id = "MoreDetails" onclick = "AppearDissapearOtherEffect('WeatherPlus' , 'WeatherInitialSection')" class = "Sumbitton">Add More details</button>
 
 
 
         <div  id = "WeatherPlus" style = "display:none;">
 
-        <input type="text" name="city" id="cityInput"  placeholder = "City">
-        <input type="text" name="city" id="stateInput" placeholder = "State">
-        <input type="text" name="city" id="zipcodeInput" placeholder = "Zipcode">
+            <input type="text" name="city" id="cityInput"  placeholder = "City">
+            <input type="text" name="city" id="stateInput" placeholder = "State">
+            <input type="text" name="city" id="zipcodeInput" placeholder = "Zipcode">
 
 
 
-        <p>Please note that these information will be saved for future convience and live data display</p>
-        <p>By clicking "get Weather" below you agree that you are happy to have these details saved into our system</p>
-        <p>If you wish to remove these information please contact support at : croptechad@gmail.com</p>
+            <p>Please note that these information will be saved for future convience and live data display</p>
+            <p>By clicking "get Weather" below you agree that you are happy to have these details saved into our system</p>
+            <p>If you wish to remove these information please contact support at : croptechad@gmail.com</p>
 
-        <button onclick = "fetchMoreDetails(2)">Get Weather</button>
-
-        
+            <button onclick = "fetchMoreDetails(2)" class = "Sumbitton">Get Weather</button>
 
         </div>
 
     </div>
-
-    <script>
-    function AppearDissapear(element) {
-        var b1 = document.getElementById(element);
-
-        if (b1.style.display === 'none' || b1.style.display === '') {
-
-            b1.style.display = 'block';
-        } else {
-
-            b1.style.display = 'none';
-        }
-    }
-
-    function AppearDissapearOtherEffect(TriggerID, AffectedID) {
-        
-    var trigger = document.getElementById(TriggerID);
-    var affected = document.getElementById(AffectedID);
-
-    if (affected.style.display === 'none' || affected.style.display === '') {
-
-        trigger.style.display = 'none'; 
-        affected.style.display = 'block'; 
-
-    } else {
-
-        trigger.style.display = 'block';
-        affected.style.display = 'none';
-
-    }
-}
-
-</script>
 
 
     
@@ -355,7 +311,7 @@ echo '<h1> Hello '.$name. '</h1>';
 
 <!-- Switch -->
 
-<div onclick="boxtoggle('Switch1' , 'Switch2')" class="initialbox" id = "Switch1">
+<div onclick="AppearDissapearOtherEffect('Switch1' , 'Switch2')" class="initialbox" id = "Switch1">
 
 <img width="100" height="100" src="https://img.icons8.com/ios/100/switches.png" alt="switches"/>
 <h2>Switch</h2>
@@ -440,13 +396,108 @@ echo '<h1> Hello '.$name. '</h1>';
 </div>
 
 
+<!-- Setting -->
+
+<div onclick="AppearDissapearOtherEffect('Setting1' , 'Setting2')" class="initialbox" id = "Setting1">
+
+<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="90" height="90" viewBox="0 0 32 32">
+<path d="M 13.1875 3 L 13.03125 3.8125 L 12.4375 6.78125 C 11.484375 7.15625 10.625 7.683594 9.84375 8.3125 L 6.9375 7.3125 L 6.15625 7.0625 L 5.75 7.78125 L 3.75 11.21875 L 3.34375 11.9375 L 3.9375 12.46875 L 6.1875 14.4375 C 6.105469 14.949219 6 15.460938 6 16 C 6 16.539063 6.105469 17.050781 6.1875 17.5625 L 3.9375 19.53125 L 3.34375 20.0625 L 3.75 20.78125 L 5.75 24.21875 L 6.15625 24.9375 L 6.9375 24.6875 L 9.84375 23.6875 C 10.625 24.316406 11.484375 24.84375 12.4375 25.21875 L 13.03125 28.1875 L 13.1875 29 L 18.8125 29 L 18.96875 28.1875 L 19.5625 25.21875 C 20.515625 24.84375 21.375 24.316406 22.15625 23.6875 L 25.0625 24.6875 L 25.84375 24.9375 L 26.25 24.21875 L 28.25 20.78125 L 28.65625 20.0625 L 28.0625 19.53125 L 25.8125 17.5625 C 25.894531 17.050781 26 16.539063 26 16 C 26 15.460938 25.894531 14.949219 25.8125 14.4375 L 28.0625 12.46875 L 28.65625 11.9375 L 28.25 11.21875 L 26.25 7.78125 L 25.84375 7.0625 L 25.0625 7.3125 L 22.15625 8.3125 C 21.375 7.683594 20.515625 7.15625 19.5625 6.78125 L 18.96875 3.8125 L 18.8125 3 Z M 14.8125 5 L 17.1875 5 L 17.6875 7.59375 L 17.8125 8.1875 L 18.375 8.375 C 19.511719 8.730469 20.542969 9.332031 21.40625 10.125 L 21.84375 10.53125 L 22.40625 10.34375 L 24.9375 9.46875 L 26.125 11.5 L 24.125 13.28125 L 23.65625 13.65625 L 23.8125 14.25 C 23.941406 14.820313 24 15.402344 24 16 C 24 16.597656 23.941406 17.179688 23.8125 17.75 L 23.6875 18.34375 L 24.125 18.71875 L 26.125 20.5 L 24.9375 22.53125 L 22.40625 21.65625 L 21.84375 21.46875 L 21.40625 21.875 C 20.542969 22.667969 19.511719 23.269531 18.375 23.625 L 17.8125 23.8125 L 17.6875 24.40625 L 17.1875 27 L 14.8125 27 L 14.3125 24.40625 L 14.1875 23.8125 L 13.625 23.625 C 12.488281 23.269531 11.457031 22.667969 10.59375 21.875 L 10.15625 21.46875 L 9.59375 21.65625 L 7.0625 22.53125 L 5.875 20.5 L 7.875 18.71875 L 8.34375 18.34375 L 8.1875 17.75 C 8.058594 17.179688 8 16.597656 8 16 C 8 15.402344 8.058594 14.820313 8.1875 14.25 L 8.34375 13.65625 L 7.875 13.28125 L 5.875 11.5 L 7.0625 9.46875 L 9.59375 10.34375 L 10.15625 10.53125 L 10.59375 10.125 C 11.457031 9.332031 12.488281 8.730469 13.625 8.375 L 14.1875 8.1875 L 14.3125 7.59375 Z M 16 11 C 13.25 11 11 13.25 11 16 C 11 18.75 13.25 21 16 21 C 18.75 21 21 18.75 21 16 C 21 13.25 18.75 11 16 11 Z M 16 13 C 17.667969 13 19 14.332031 19 16 C 19 17.667969 17.667969 19 16 19 C 14.332031 19 13 17.667969 13 16 C 13 14.332031 14.332031 13 16 13 Z"></path>
+</svg>
+<h2>Settings</h2>
+</div>
+
+<div class = "ExpandBackground" id = "Setting2">
+<div class="expandedbox" id = "Setting3" >
+    
+    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="90" height="90" viewBox="0 0 32 32">
+    <path d="M 13.1875 3 L 13.03125 3.8125 L 12.4375 6.78125 C 11.484375 7.15625 10.625 7.683594 9.84375 8.3125 L 6.9375 7.3125 L 6.15625 7.0625 L 5.75 7.78125 L 3.75 11.21875 L 3.34375 11.9375 L 3.9375 12.46875 L 6.1875 14.4375 C 6.105469 14.949219 6 15.460938 6 16 C 6 16.539063 6.105469 17.050781 6.1875 17.5625 L 3.9375 19.53125 L 3.34375 20.0625 L 3.75 20.78125 L 5.75 24.21875 L 6.15625 24.9375 L 6.9375 24.6875 L 9.84375 23.6875 C 10.625 24.316406 11.484375 24.84375 12.4375 25.21875 L 13.03125 28.1875 L 13.1875 29 L 18.8125 29 L 18.96875 28.1875 L 19.5625 25.21875 C 20.515625 24.84375 21.375 24.316406 22.15625 23.6875 L 25.0625 24.6875 L 25.84375 24.9375 L 26.25 24.21875 L 28.25 20.78125 L 28.65625 20.0625 L 28.0625 19.53125 L 25.8125 17.5625 C 25.894531 17.050781 26 16.539063 26 16 C 26 15.460938 25.894531 14.949219 25.8125 14.4375 L 28.0625 12.46875 L 28.65625 11.9375 L 28.25 11.21875 L 26.25 7.78125 L 25.84375 7.0625 L 25.0625 7.3125 L 22.15625 8.3125 C 21.375 7.683594 20.515625 7.15625 19.5625 6.78125 L 18.96875 3.8125 L 18.8125 3 Z M 14.8125 5 L 17.1875 5 L 17.6875 7.59375 L 17.8125 8.1875 L 18.375 8.375 C 19.511719 8.730469 20.542969 9.332031 21.40625 10.125 L 21.84375 10.53125 L 22.40625 10.34375 L 24.9375 9.46875 L 26.125 11.5 L 24.125 13.28125 L 23.65625 13.65625 L 23.8125 14.25 C 23.941406 14.820313 24 15.402344 24 16 C 24 16.597656 23.941406 17.179688 23.8125 17.75 L 23.6875 18.34375 L 24.125 18.71875 L 26.125 20.5 L 24.9375 22.53125 L 22.40625 21.65625 L 21.84375 21.46875 L 21.40625 21.875 C 20.542969 22.667969 19.511719 23.269531 18.375 23.625 L 17.8125 23.8125 L 17.6875 24.40625 L 17.1875 27 L 14.8125 27 L 14.3125 24.40625 L 14.1875 23.8125 L 13.625 23.625 C 12.488281 23.269531 11.457031 22.667969 10.59375 21.875 L 10.15625 21.46875 L 9.59375 21.65625 L 7.0625 22.53125 L 5.875 20.5 L 7.875 18.71875 L 8.34375 18.34375 L 8.1875 17.75 C 8.058594 17.179688 8 16.597656 8 16 C 8 15.402344 8.058594 14.820313 8.1875 14.25 L 8.34375 13.65625 L 7.875 13.28125 L 5.875 11.5 L 7.0625 9.46875 L 9.59375 10.34375 L 10.15625 10.53125 L 10.59375 10.125 C 11.457031 9.332031 12.488281 8.730469 13.625 8.375 L 14.1875 8.1875 L 14.3125 7.59375 Z M 16 11 C 13.25 11 11 13.25 11 16 C 11 18.75 13.25 21 16 21 C 18.75 21 21 18.75 21 16 C 21 13.25 18.75 11 16 11 Z M 16 13 C 17.667969 13 19 14.332031 19 16 C 19 17.667969 17.667969 19 16 19 C 14.332031 19 13 17.667969 13 16 C 13 14.332031 14.332031 13 16 13 Z"></path>
+    </svg>
+
+    <div class="moistureBox">
+
+    <img width="100" height="100" src="https://img.icons8.com/plasticine/100/back.png" alt="back" onclick="boxtoggle('Setting2' , 'Setting1' , 'Setting3')"/>
+    
+
+        <div  class = "ExtendedBoxHeader">
+            
+
+            <div class = "ExtHeaderTxt">
+                <h1>Current moisture </h1>
+                <h1 id="SensorVal2"></h1>
+                <p id="Condition2"></p>
+            </div>
+
+        </div>
+
+        <div class="sensorDividor">
+
+            <div>
+                <h3>Settings</h3>
+
+                <div>
+                    <h3>Personal Details</h3>
+
+                    <button>Change First Name</button>
+                    <button>Change Last Name</button>
+                    <button>Change email</button>
+                    <button>Change password</button>
+                </div>
+
+                <div>
+                    <h3>Functions</h3>
+
+                    <button>Hide explanations</button>
+                </div>
+
+                <div>
+                    <h3>Data Protection</h3>
+
+                    <button>Erase Sensitive Data</button>
+                    
+                    <p>Note by clicking the button above the following information will be cleared from our database :</p>
+                    <p>- Location (City , State , ZipCode)</p>
+
+                </div>
+
+
+
+</div>    
+
+
+
+
+        </div>
+
+    </div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <!-- Adding Sensors (ADMIN) -->
 <?php
     if($_SESSION['role'] === 'ADMIN'):
 ?>
-<div class="initialbox" onclick="boxtoggle('Addition1' , 'Addition2')" id = "Addition1" >
+<div class="initialbox" onclick="AppearDissapearOtherEffect('Addition1' , 'Addition2')" id = "Addition1" >
 
 <img width="100" height="100" src="https://img.icons8.com/ios/100/add--v1.png" alt="add--v1"/>
 <h2>Sensor Addition</h2>

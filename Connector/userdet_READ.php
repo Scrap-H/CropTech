@@ -25,7 +25,7 @@ if (isset($_POST["login"])) {
  
     if($user && password_verify($password, $user["Password"])){
 
-        $_SESSION["user_id"] = $user["id"];
+        $_SESSION["user_id"] = $user["ID"];
         $_SESSION["User_firstName"] = $user["FirstName"];
 
         if($email === "croptechad@gmail.com"){

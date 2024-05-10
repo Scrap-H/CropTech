@@ -73,8 +73,8 @@ async function fetchForecastPlus() {
         const InputtedState = document.getElementById('stateInput').value;
         const InputtedZipCode = document.getElementById('zipcodeInput').value;
 
-        const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${InputtedCity}&appid=${apiKey}&units=${units}&cnt=${cnt}`;
-
+        const apiIrl = `https://api.openweathermap.org/data/2.5/forecast?q=${InputtedCity},zip=${zipcodeInput}&appid=${apiKey}`;
+        
         const response = await fetch(apiUrl);
         const data = await response.json();
 

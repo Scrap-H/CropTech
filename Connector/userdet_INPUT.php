@@ -10,6 +10,7 @@ if(isset($_POST["submit"])) {
     $errorDisplay = array();
 
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+    $hashed_lastname = password_hash($lastname, PASSWORD_DEFAULT);
 
     require_once("dbCon.php");
 
@@ -28,12 +29,12 @@ if(isset($_POST["submit"])) {
     }else{
 
 
-        $sql = "INSERT INTO userdetails (FirstName, LastName, Email, Password) VALUES (:firstName, :lastName, :email, :hashed_password)";
+        $sql = "INSERT INTO userdetails (FirstName, LastName, Email, Password) VALUES (:firstName, :hashed_lastname, :email, :hashed_password)";
     $stmt = $conn->prepare($sql);
 
     if($stmt) {
         $stmt->bindParam(':firstName', $firstName, PDO::PARAM_STR);
-        $stmt->bindParam(':lastName', $lastName, PDO::PARAM_STR);
+        $stmt->bindParam(':hashed_lastname', $lastName, PDO::PARAM_STR);
         $stmt->bindParam(':email', $email, PDO::PARAM_STR);
         $stmt->bindParam(':hashed_password', $hashed_password, PDO::PARAM_STR);
 
