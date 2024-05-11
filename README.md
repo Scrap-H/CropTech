@@ -38,6 +38,12 @@ note there is a feature for this demo if you register an account using : croptec
 
  - Note this was made on **4/25/2024**, what you see may be different.
 
+**TROUBLESHOOT**
+if you encounter in your local run log that it is missing "vendor" or unable to read the excel and such that means you would need to install composer into the project directory , you can do that by going to the console that is running the localhost and follow these steps : 
+ press " ctrl + C " to stop the run 
+ ensure you have installed composer for the version
+in your console , type " Install Composer " 
+this should install the vendor file and phpoffice for you to be able to read the dummy files.
 
 **OPTIONAL : this step is if there is an issue with connecting your SQL to the project**
 
