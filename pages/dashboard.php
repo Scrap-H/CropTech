@@ -26,8 +26,7 @@ if(isset($_GET['logout'])){
             boxtoggle('Switch2' , 'Switch1' , 'Switch3');
             boxtoggle('Automation2' , 'Automation1' , 'Automation3');
             boxtoggle('Setting2' , 'Setting1' , 'Setting3');
-
-            boxtoggle('Addition2' , 'Addition1' , 'Addition3');
+            
         }
     }
 </script>
@@ -502,7 +501,7 @@ echo '<h1> Hello '.$name.'</h1>';
 <img width="100" height="100" src="https://img.icons8.com/ios/100/add--v1.png" alt="add--v1"/>
 <div class = "moistureBox">
 
-    <img width="100" height="100" src="https://img.icons8.com/plasticine/100/back.png" alt="back" onclick="boxtoggle('Addition2' , 'Addition1' , 'Addition3')"/>
+    <img width="100" height="100" src="https://img.icons8.com/plasticine/100/back.png" alt="back" onclick="boxtoggle('Addition' , 'Addition2' , 'Addition3')"/>
 
     <div>
     <h1>Sensor Addition</h1>
